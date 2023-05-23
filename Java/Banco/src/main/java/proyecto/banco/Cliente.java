@@ -25,11 +25,12 @@ public class Cliente {
     private double mediaIngreso;
     private boolean activo;
 
-    public Cliente(int idCliente, String dni, String nombre, String apellidos, LocalDate fnac, String domicilio, String localidad, Sexo sexo, boolean casado, double mediaIngreso, boolean activo) {
+    public Cliente(int idCliente, String dni, String nombre, String apellidos, String telefono,LocalDate fnac, String domicilio, String localidad, Sexo sexo, boolean casado, double mediaIngreso, boolean activo) {
         this.idCliente = idCliente;
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
+        this.telefono = telefono;
         this.fnac = fnac;
         this.domicilio = domicilio;
         this.localidad = localidad;
@@ -74,6 +75,14 @@ public class Cliente {
         this.apellidos = apellidos;
     }
 
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+    
     public LocalDate getFnac() {
         return fnac;
     }
@@ -139,7 +148,7 @@ public class Cliente {
         }else{
             act="No";
         }
-        return "Cliente{" + "idCliente=" + idCliente + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", fnac=" + fnac.format(ldf) + ", domicilio=" + domicilio + ", localidad=" + localidad + ", sexo=" + sexo + ", casado=" + casado + ", mediaIngreso=" + mediaIngreso + ", activo=" + act + '}';
+        return "Cliente{" + "idCliente=" + idCliente + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", telefono=" + telefono +", fnac=" + fnac.format(ldf) + ", domicilio=" + domicilio + ", localidad=" + localidad + ", sexo=" + sexo + ", casado=" + casado + ", mediaIngreso=" + mediaIngreso + ", activo=" + act + '}';
     }
     
     
