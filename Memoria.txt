@@ -1,0 +1,3 @@
+23/05/2023
+1- Modificacion de la base de datos (agregacion de la clumna telefono en la tabla cliente, Modificacion columna cantidad tabla movimiento): Alter table cliente ADD telefono CHAR(9) NOT NULL AFTER apellidos; | Alter table movimiento MODIFY cantidad DOUBLE NOT NULL;
+2- Diagrama UML del proyecto
