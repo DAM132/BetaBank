@@ -19,10 +19,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
-<<<<<<< HEAD:ejemplo1Swing/src/main/java/ejemplos/ejemplo1swing/VentanaPrincipal.java
-//        this.setLocationRelativeTo(null);
-=======
->>>>>>> 9bca71dd6594980ef1d685a07ed7ffc429d9137a:Swing/src/main/java/ejemplos/ejemplo1swing/VentanaPrincipal.java
         pantallaInicio.setVisible(true);
         inicioSesion.setVisible(false);
         registro.setVisible(false);
@@ -36,17 +32,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     
-<<<<<<< HEAD:ejemplo1Swing/src/main/java/ejemplos/ejemplo1swing/VentanaPrincipal.java
-       private void mostrarImagen() {
-        ImageIcon img = new ImageIcon(getClass().getClassLoader().getResource("Imagen/casas.jpg"));
-        Icon icon = new ImageIcon(img.getImage().
-                getScaledInstance(lblIcono.getWidth(),
-                        lblIcono.getHeight(), img.getIconWidth()));
-        lblIcono.setIcon(icon);
-    }
-=======
     
->>>>>>> 9bca71dd6594980ef1d685a07ed7ffc429d9137a:Swing/src/main/java/ejemplos/ejemplo1swing/VentanaPrincipal.java
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
