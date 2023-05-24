@@ -32,6 +32,12 @@ END WHILE;
 END
 */
 
-ALTER TABLE prestamos MODIFY periodoMes SMALLINT NOT NULL;
-ALTER TABLE prestamos MODIFY plazoDias SMALLINT NOT NULL;
+-- ALTER TABLE prestamos MODIFY periodoMes SMALLINT NOT NULL;
+-- ALTER TABLE prestamos MODIFY plazoDias SMALLINT NOT NULL;
+
+-- ALTER TABLE `banco`.`movimiento` DROP FOREIGN KEY `fk_movimiento_cliente`; ALTER TABLE `banco`.`movimiento` DROP INDEX `fk_movimiento_cliente` ;
+ALTER TABLE prestamos ADD idMovimiento INT UNSIGNED NOT NULL;
+ALTER TABLE prestamos ADD CONSTRAINT fk_prestamo_movimiento FOREIGN KEY (idMovimiento) REFERENCES movimiento(idMovimientos);
+
+
 
