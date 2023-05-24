@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,6 +19,49 @@ public class CuentaImp {
 
     private static Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
+    }
+
+    public static List<Cuenta> getDatosCuentas() {
+        String sql = "SELECT * FROM cuenta";
+        List<Cuenta> cuentas = new LinkedList<>();
+        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);  
+              ResultSet rs = stmt.executeQuery()) {
+            
+            while (rs.next()) {
+                Cuenta cuenta = crearCuenta(rs);
+                if (!cuentas.add(cuenta)) {
+                    throw new Exception("error no se ha insertado el objeto");
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("SQLexception: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return cuentas;
+    }
+
+    public static List<Cuenta> getDatosDeUnTipoCuenta(String tipoCuenta) {
+        String sql = "SELECT * FROM cuenta WHERE tipoCuenta=?";
+        List<Cuenta> cuentas = new LinkedList<>();
+        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            try ( ResultSet rs = stmt.executeQuery()) {
+                stmt.setString(1, tipoCuenta);
+                while (rs.next()) {
+                    Cuenta cuenta = crearCuenta(rs);
+                    if (!cuentas.add(cuenta)) {
+                        throw new Exception("error no se ha insertado el objeto");
+                    }
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("SQLexception: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return cuentas;
     }
 
     public static Cuenta getDatosCuenta(String iban) {
@@ -74,31 +116,33 @@ public class CuentaImp {
             System.out.println(ex.getMessage());
         }
     }
-    
-    public static Cliente getDatosCliente(int id) {
-        String sql = "SELECT * FROM cliente WHERE idCliente=?";
-        Cliente cliente = null;
+
+    public void modificarCuenta(Cuenta cuenta) {
+         String sql = "UPDATE cuenta SET iban=?,tipoCuenta=?,saldo=?,ingresos=?,fnac=?,media=? WHERE idCliente=?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-            stmt.setInt(1, id);
-            try ( ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    cliente = crearCliente(rs);
-                }
+            stmt.setString(1, cuenta.getIban());
+            stmt.setString(2, cuenta.getTipoCuenta());
+            stmt.setDouble(3, cuenta.getSaldo());
+            stmt.setDouble(4, cuenta.getIngresos());
+            stmt.setDouble(5, cuenta.getMedia());
+            stmt.setInt(6, cuenta.getCliente().getIdCliente());
+            int salida = stmt.executeUpdate();
+            if (salida != 1) {
+                throw new Exception("No se ha modificado el cliente");
+            }else{
+                System.out.println("Se ha modificado el cliente");
             }
         } catch (SQLException ex) {
-            System.out.println("SQLexception: " + ex.getMessage());
+            System.out.println(ex.getMessage());
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        return cliente;
     }
-
-    public static Cliente crearCliente(ResultSet rs) throws SQLException {
-        return new Cliente(rs.getInt("idCliente"), rs.getString("dni"), rs.getString("nombre"), rs.getString("apellidos"), rs.getString("telefono"), rs.getDate("fnac").toLocalDate(), rs.getString("domicilio"), rs.getString("localidad"), Sexo.valueOf(rs.getString("sexo")), rs.getBoolean("casado"), rs.getDouble("mediaIngreso"), rs.getBoolean("activo"));
-    }
+    
 
     public static Cuenta crearCuenta(ResultSet rs) throws SQLException {
-        Cliente cliente = (Cliente) getDatosCliente(rs.getInt("idCliente"));
+        ClienteDAOImp clienteAux = new ClienteDAOImp();
+        Cliente cliente = clienteAux.porId(rs.getInt("idCliente"));
         Cuenta cuenta = new Cuenta(rs.getString("iban"), rs.getString("tipoCuenta"), rs.getDouble("saldo"), rs.getDouble("ingresos"), rs.getDouble("media"), cliente);
         return cuenta;
     }
