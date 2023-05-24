@@ -61,15 +61,15 @@ public class MovimientoDAOImp implements Repositorio<Movimiento> {
     }
 
     @Override
-    public void insertar(Movimiento t) {
+    public void insertar(Movimiento movimiento) {
         String sql = "INSERT INTO movimiento(cantidad,concepto,emisor,destinatario,numeroCuenta,fecha) VALUES(?,?,?,?,?,?)";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-            java.sql.Date fnac = java.sql.Date.valueOf(t.getFechaMovimiento());
-            stmt.setDouble(1, t.getCantidad());
-            stmt.setString(2, t.getConcepto());
-            stmt.setString(3, t.getEmisor());
-            stmt.setInt(4, t.getDestinatario().getIdCliente());
-            stmt.setString(5, t.getNumeroCuenta());
+            java.sql.Date fnac = java.sql.Date.valueOf(movimiento.getFechaMovimiento());
+            stmt.setDouble(1, movimiento.getCantidad());
+            stmt.setString(2, movimiento.getConcepto());
+            stmt.setString(3, movimiento.getEmisor());
+            stmt.setInt(4, movimiento.getDestinatario().getIdCliente());
+            stmt.setString(5, movimiento.getNumeroCuenta());
             stmt.setDate(6, fnac);
             int salida = stmt.executeUpdate();
             if (salida != 1) {
@@ -83,17 +83,17 @@ public class MovimientoDAOImp implements Repositorio<Movimiento> {
     }
 
     @Override
-    public void modificar(Movimiento t) {
+    public void modificar(Movimiento movimiento) {
         String sql = "UPDATE movimiento SET cantidad=?,concepto=?,emisor=?,destinatario=?,numeroCuenta=?,fecha=?  WHERE idMovimiento=?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-            java.sql.Date fnac = java.sql.Date.valueOf(t.getFechaMovimiento());
-            stmt.setDouble(1, t.getCantidad());
-            stmt.setString(2, t.getConcepto());
-            stmt.setString(3, t.getEmisor());
-            stmt.setInt(4, t.getDestinatario().getIdCliente());
-            stmt.setString(5, t.getNumeroCuenta());
+            java.sql.Date fnac = java.sql.Date.valueOf(movimiento.getFechaMovimiento());
+            stmt.setDouble(1, movimiento.getCantidad());
+            stmt.setString(2, movimiento.getConcepto());
+            stmt.setString(3, movimiento.getEmisor());
+            stmt.setInt(4, movimiento.getDestinatario().getIdCliente());
+            stmt.setString(5, movimiento.getNumeroCuenta());
             stmt.setDate(6, fnac);
-            stmt.setInt(7, t.getIdMovimiento());
+            stmt.setInt(7, movimiento.getIdMovimiento());
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception("No se ha modificado el cliente");
