@@ -23,7 +23,7 @@ public class PerfilDAOImp implements Repositorio<Perfil> {
 
     @Override
     public List<Perfil> listar() {
-        String sql = "SELECT idPerfil,usuario,md5(contraseña),estadoCivil,estadoLaboral,moroso,idPareja FROM perfil";
+        String sql = "SELECT idPerfil,usuario,contraseña,estadoCivil,estadoLaboral,moroso,idPareja FROM perfil";
         List<Perfil> perfiles = new LinkedList<>();
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);  ResultSet rs = stmt.executeQuery()) {
 
@@ -123,7 +123,7 @@ public class PerfilDAOImp implements Repositorio<Perfil> {
     }
 
     public static Perfil crearPerfil(ResultSet rs) throws SQLException {
-        Perfil perfil = new Perfil(rs.getInt("idPerfil"), rs.getString("usuario"), rs.getString("contraseña"), EstadoCivil.valueOf(rs.getString("estadoCivil")), EstadoLaboral.valueOf(rs.getString("estadoCivil")), rs.getBoolean("moroso"), rs.getInt("idPareja"));
+        Perfil perfil = new Perfil(rs.getInt("idPerfil"), rs.getString("usuario"), rs.getString("contraseña"), EstadoCivil.valueOf(rs.getString("estadoCivil").toUpperCase()), EstadoLaboral.valueOf(rs.getString("estadoLaboral").toUpperCase()), rs.getBoolean("moroso"), rs.getInt("idPareja"));
         return perfil;
     }
 
