@@ -21,8 +21,9 @@ public class Prestamo {
     private double tipoInteres;
     private int PlazoDias;
     private EstadoPrestamo EstadoPrest;
+    private int idMovimiento;
 
-    public Prestamo(int idPrestamo, int idCliente, LocalDate fechaFirma, double cantidad, int PeriodoMes, double tipoInteres, int PlazoDias, EstadoPrestamo EstadoPrest) {
+    public Prestamo(int idPrestamo, int idCliente, LocalDate fechaFirma, double cantidad, int PeriodoMes, double tipoInteres, int PlazoDias, EstadoPrestamo EstadoPrest, int idMovimiento) {
         this.idPrestamo = idPrestamo;
         this.idCliente = idCliente;
         this.fechaFirma = fechaFirma;
@@ -31,6 +32,7 @@ public class Prestamo {
         this.tipoInteres = tipoInteres;
         this.PlazoDias = PlazoDias;
         this.EstadoPrest = EstadoPrest;
+        this.idMovimiento = idMovimiento;
     }
 
     public Prestamo() {
@@ -100,11 +102,19 @@ public class Prestamo {
         this.EstadoPrest = EstadoPrest;
     }
 
+    public int getIdMovimiento() {
+        return idMovimiento;
+    }
+
+    public void setIdMovimiento(int idMovimiento) {
+        this.idMovimiento = idMovimiento;
+    }
+    
     @Override
     public String toString() {
         
         DateTimeFormatter ldf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return "Prestamo{" + "idPrestamo=" + idPrestamo + ", idCliente=" + idCliente + ", fechaFirma=" + fechaFirma.format(ldf) + ", cantidad=" + cantidad + ", PeriodoMes=" + PeriodoMes + ", tipoInteres=" + tipoInteres + ", PlazoDias=" + PlazoDias + ", EstadoPrest=" + EstadoPrest + '}';
+        return "Prestamo{" + "idPrestamo=" + idPrestamo + ", idCliente=" + idCliente + ", fechaFirma=" + fechaFirma.format(ldf) + ", cantidad=" + cantidad + ", PeriodoMes=" + PeriodoMes + ", tipoInteres=" + tipoInteres + ", PlazoDias=" + PlazoDias + ", EstadoPrest=" + EstadoPrest +", idMovimiento=" + idMovimiento +'}';
     }
     
     
