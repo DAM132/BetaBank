@@ -19,7 +19,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
-        this.setLocationRelativeTo(null);
+//        this.setLocationRelativeTo(null);
         pantallaInicio.setVisible(true);
         inicioSesion.setVisible(false);
         registro.setVisible(false);
@@ -34,7 +34,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     
-      private void mostrarImagen() {
+       private void mostrarImagen() {
         ImageIcon img = new ImageIcon(getClass().getClassLoader().getResource("Imagen/casas.jpg"));
         Icon icon = new ImageIcon(img.getImage().
                 getScaledInstance(lblIcono.getWidth(),
