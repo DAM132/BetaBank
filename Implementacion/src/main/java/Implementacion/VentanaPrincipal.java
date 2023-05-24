@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ejemplos.ejemplo1swing;
+package Implementacion;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -159,8 +159,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(pantallaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pantallaInicioLayout.createSequentialGroup()
                         .addGap(54, 54, 54)
-                        .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42))
+                        .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pantallaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
