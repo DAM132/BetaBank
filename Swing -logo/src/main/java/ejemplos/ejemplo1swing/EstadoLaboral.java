@@ -8,6 +8,8 @@ package ejemplos.ejemplo1swing;
  *
  * @author DAM118
  */
-public enum EstadoLaboral {
+public  enum EstadoLaboral {
     EMPLEADO,DESEMPLEADO, AUTÓNOMO, PENSIONISTA, RENTISTA, ESTUDIANTE, RESPONSABLE_DEL_HOGAR
+    
+    
 }
