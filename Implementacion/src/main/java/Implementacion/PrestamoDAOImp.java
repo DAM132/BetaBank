@@ -61,8 +61,8 @@ public class PrestamoDAOImp implements Repositorio<Prestamo> {
     }
 
     @Override
-    public void insertar(Prestamo prestamo) {
-        String sql = "INSERT INTO prestamo(idCliente,fechaFirma,periodoMes,cantidad,tipoInteres,plazoDias,estado,) VALUES(?,?,?,?,?,?)";
+     public void insertar(Prestamo prestamo) {
+        String sql = "INSERT INTO prestamo(idCliente,fechaFirma,periodoMes,cantidad,tipoInteres,plazoDias,estado,idMovimiento) VALUES(?,?,?,?,?,?,?,?)";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             java.sql.Date fechafirma = java.sql.Date.valueOf(prestamo.getFechaFirma());
             stmt.setInt(1, prestamo.getIdCliente());
@@ -72,6 +72,7 @@ public class PrestamoDAOImp implements Repositorio<Prestamo> {
             stmt.setDouble(5, prestamo.getTipoInteres());
             stmt.setInt(6, prestamo.getPlazoDias());
             stmt.setString(7, prestamo.getEstadoPrest().name());
+            stmt.setInt(8, prestamo.getIdMovimiento());
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception("No se ha conseguido registrar el movimiento");
@@ -84,8 +85,8 @@ public class PrestamoDAOImp implements Repositorio<Prestamo> {
     }
 
     @Override
-    public void modificar(Prestamo prestamo) {
-        String sql = "UPDATE prestamo SET idCliente=?,fechaFirma=?,periodoMes=?,cantidad=?,tipoInteres=?,plazpDias=?,estado=?  WHERE idMovimiento=?";
+     public void modificar(Prestamo prestamo) {
+        String sql = "UPDATE prestamo SET idCliente=?,fechaFirma=?,periodoMes=?,cantidad=?,tipoInteres=?,plazpDias=?,estado=?,idMovimiento=?  WHERE idPrestamo=?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             java.sql.Date fechafirma = java.sql.Date.valueOf(prestamo.getFechaFirma());
             stmt.setInt(1, prestamo.getIdCliente());
@@ -95,11 +96,13 @@ public class PrestamoDAOImp implements Repositorio<Prestamo> {
             stmt.setDouble(5, prestamo.getTipoInteres());
             stmt.setInt(6, prestamo.getPlazoDias());
             stmt.setString(7, prestamo.getEstadoPrest().name());
+            stmt.setInt(8, prestamo.getIdMovimiento());
+            stmt.setInt(9, prestamo.getIdPrestamo());
             int salida = stmt.executeUpdate();
             if (salida != 1) {
-                throw new Exception("No se ha modificado el cliente");
+                throw new Exception("No se ha modificado el prestamos");
             } else {
-                System.out.println("Se ha modificado el cliente");
+                System.out.println("Se ha modificado el prestamo");
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -127,7 +130,7 @@ public class PrestamoDAOImp implements Repositorio<Prestamo> {
 
     public static Prestamo crearPrestamo(ResultSet rs) throws SQLException {
         LocalDate fechafirma = rs.getDate("fechaFirma").toLocalDate();
-        return new Prestamo(rs.getInt("idPrestamo"), rs.getInt("idCliente"), fechafirma, rs.getDouble("cantidad"), rs.getInt("periodoMes"), rs.getDouble("tipoInteres"), rs.getInt("plazoDias"), EstadoPrestamo.valueOf(rs.getString("EstadoPrestamo")));
+        return new Prestamo(rs.getInt("idPrestamo"), rs.getInt("idCliente"), fechafirma, rs.getDouble("cantidad"), rs.getInt("periodoMes"), rs.getDouble("tipoInteres"), rs.getInt("plazoDias"), EstadoPrestamo.valueOf(rs.getString("EstadoPrestamo")),rs.getInt("idMovimiento"));
     }
 
 }
