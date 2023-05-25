@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beta Bank</title>
+    <title>BetaBank-Prestamos</title>
     <style>
         /* Estilos CSS */
 
@@ -33,6 +33,14 @@
         h1 {
             font-size: 32px;
             margin: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #66cbff;
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 10px;
         }
 
         main {
@@ -69,6 +77,11 @@
             background-color: #f4f4f4;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .loan-option:hover {
+            transform: scale(1.05);
         }
 
         .loan-option h3 {
@@ -86,6 +99,7 @@
 
         .client-section {
             text-align: center;
+            width: 100%;
         }
 
         .client-section h2 {
@@ -98,8 +112,14 @@
         .testimonial {
             margin-bottom: 20px;
             padding: 10px;
-            border: 1px solid #66cbff;
-            border-radius: 5px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .testimonial:hover {
+            background-color: #e0e0e0;
         }
 
         .testimonial p {
@@ -107,10 +127,24 @@
         }
 
         footer {
+            left: 0;
+            bottom: 0;
+            width: 100%;
             background-color: #66cbff;
             color: #fff;
-            padding: 10px;
+            padding: 20px;
             text-align: center;
+        }
+
+        .quienes-somos {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .quienes-somos:hover {
+            background-color: #e0e0e0;
         }
     </style>
 </head>
@@ -136,19 +170,20 @@
     <hr>
     <hr>
 
-
     <main>
         <section class="loan-section">
             <p><b>En BetaBank ofrecemos préstamos atractivos y flexibles que se adaptan a tus necesidades financieras.
-                ¡Obtén el
-                dinero que necesitas hoy mismo y disfruta de nuestras ventajas!</b></p>
+                    ¡Obtén el
+                    dinero que necesitas hoy mismo y disfruta de nuestras ventajas!</b></p>
 
             <div class="loan-details">
                 <div class="loan-option">
-                    <img src="Imagenes/Captura.JPG" alt="Imagen del préstamo personal" align="center" width="300"
-                        height="504">
+                    <a href="PrestamoPersonal.html" style="text-decoration: none; color: inherit;"><img
+                            src="Imagenes/Captura.JPG" alt="Imagen del préstamo personal" align="center" width="300"
+                            height="504"></a>
                     <hr>
-                    <h3>Préstamo Personal</h3>
+                    <h3><a href="PrestamoPersonal.html" style="text-decoration: none; color: inherit;">Préstamo
+                            Personal</a></h3>
                     <p>Obtén hasta $10,000 con una tasa de interés competitiva y plazos flexibles de pago. Sin
                         comisiones ni
                         penalizaciones por pagos atrasados.</p>
@@ -161,10 +196,12 @@
                     </ul>
                 </div>
                 <div class="loan-option">
-                    <img src="Imagenes/familioa.JPG" alt="Imagen del préstamo personal" align="center" width="300"
-                        height="504">
+                    <a href="PrestamoHipotecario.html" style="text-decoration: none; color: inherit;"><img
+                            src="Imagenes/familioa.JPG" alt="Imagen del préstamo personal" align="center" width="300"
+                            height="504"></a>
                     <hr>
-                    <h3>Préstamo Hipotecario</h3>
+                    <h3><a href="PrestamoHipotecario.html" style="text-decoration: none; color: inherit;">Préstamo
+                            Hipotecario</a></h3>
                     <p>Compra la casa de tus sueños con nuestro préstamo hipotecario. Ofrecemos tasas competitivas y
                         flexibilidad en los
                         plazos de pago.</p>
@@ -179,25 +216,63 @@
             </div>
         </section>
 
+        <br>
+
+        <div class="quienes-somos">
+            <h2>Quiénes Somos</h2>
+            <p class="descripcion">Somos BetaBank, un banco dedicado a brindar soluciones financieras confiables y
+                accesibles para nuestros clientes. Nos esforzamos por ofrecer productos y servicios de calidad que
+                satisfagan sus necesidades financieras y les ayuden a alcanzar sus metas.</p>
+            <p class="descripcion">Nuestro equipo está compuesto por profesionales altamente capacitados y
+                comprometidos, que se esfuerzan por brindar un excelente servicio al cliente y asesoramiento financiero
+                personalizado. Valoramos la confianza que nuestros clientes depositan en nosotros y nos esforzamos por
+                superar sus expectativas.</p>
+            <p class="descripcion">En BetaBank, nos preocupamos por la comunidad y nos comprometemos a contribuir al
+                crecimiento económico y social. Apoyamos iniciativas locales y colaboramos con organizaciones benéficas
+                para hacer una diferencia positiva en la sociedad.</p>
+        </div>
+
+        <br>
+        <br>
+
         <section class="client-section">
-            <h2>Nuestros clientes satisfechos</h2>
-            <div class="testimonial">
-                <p>"¡Beta Bank me brindó un préstamo sin complicaciones y con una tasa de interés baja! ¡Estoy muy
-                    contento con su
-                    servicio!"</p>
-                <p>- Juan Palomo</p>
-            </div>
 
             <div class="testimonial">
-                <p>"Nunca había recibido un servicio tan amable y eficiente como el de Beta Bank. ¡Recomiendo sus
-                    préstamos a todos!"</p>
-                <p>- Pedro Picapiedra</p>
+                <h2>Nuestros clientes satisfechos</h2>
+                <p><b>"¡BetaBank me brindó un préstamo sin complicaciones y con una tasa de interés baja! ¡Estoy muy
+                        contento con su
+                        servicio!"</b></p>
+                <p>- Samuel De Luque</p>
+
+                <hr>
+
+                <p><b>"Nunca había recibido un servicio tan amable y eficiente como el de BetaBank. ¡Recomiendo sus
+                        préstamos a todos!"</b></p>
+                <p>- Mark Evans</p>
+
+                <hr>
+
+                <p><b>"¡BetaBank son los mejores, despues de mi! ¡SUUUUUUUU!!!!"</b></p>
+                <p>- Cristiano Ronaldo</p>
+                <br><img src="Imagenes/patrocinio.png" alt="Imagen de cristiano" width="400" height="450" border="4">
+
             </div>
+
         </section>
+
     </main>
 
     <footer>
-        <p>&copy;2023 BetaBank. Todos los derechos reservados.</p>
+        <p><a href="https://instagram.com/elbancodelosbetas?igshid=MmJiY2I4NDBkZg=="
+                style="text-decoration: none; color: inherit;"><img
+                    src="Imagenes/png-clipart-logo-instagram-brand-isntagram-miscellaneous-company-removebg-preview.png"
+                    width="35" height="35" alt="Logo Instagram"></a> <a
+                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="text-decoration: none; color: inherit;"><img
+                    src="Imagenes/png-transparent-youtube-earthsafe-chemical-alternatives-family-recipes-video-youtube-angle-rectangle-spot-removebg-preview-removebg-preview.png"
+                    width="35" height="35" alt="Logo youtube"></a> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                style="text-decoration: none; color: inherit;"><img src="Imagenes/107195.png" width="35" height="35"
+                    alt="Logo youtube"></a>
+        <p></p>&copy;2023 BetaBank. Todos los derechos reservados.</p>
     </footer>
 </body>
 
