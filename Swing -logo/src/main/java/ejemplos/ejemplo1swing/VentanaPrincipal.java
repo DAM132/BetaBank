@@ -9,6 +9,7 @@ import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,6 +17,11 @@ import javax.swing.JOptionPane;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
+    private DefaultTableModel modeloTabla;
+    private int idUsuarioLogueado;
+    private Perfil perfil;
+    private List<Prestamo> prestamos = new ArrayList<>();
+    
     /**
      * Creates new form VentanaPrincipal
      */
@@ -24,8 +30,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pantallaInicio.setVisible(true);
         inicioSesion.setVisible(false);
         registro.setVisible(false);
+        modeloTabla = (DefaultTableModel) jTable1.getModel();
 
     }
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,6 +112,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         consultarPrestamo = new javax.swing.JPanel();
         prestamoActual = new javax.swing.JLabel();
         logoConsultarPrestamo = new javax.swing.JLabel();
+        volver4 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         barraMenu = new javax.swing.JMenuBar();
         opciones = new javax.swing.JMenu();
         salir = new javax.swing.JMenuItem();
@@ -680,6 +694,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         logoConsultarPrestamo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/logo2.jpg"))); // NOI18N
 
+        volver4.setText("Volver");
+        volver4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        volver4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volver4ActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout consultarPrestamoLayout = new javax.swing.GroupLayout(consultarPrestamo);
         consultarPrestamo.setLayout(consultarPrestamoLayout);
         consultarPrestamoLayout.setHorizontalGroup(
@@ -687,17 +719,33 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(consultarPrestamoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(consultarPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(prestamoActual)
-                    .addComponent(logoConsultarPrestamo))
-                .addContainerGap(445, Short.MAX_VALUE))
+                    .addGroup(consultarPrestamoLayout.createSequentialGroup()
+                        .addComponent(prestamoActual)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(consultarPrestamoLayout.createSequentialGroup()
+                        .addComponent(logoConsultarPrestamo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(volver4)))
+                .addContainerGap())
+            .addGroup(consultarPrestamoLayout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         consultarPrestamoLayout.setVerticalGroup(
             consultarPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(consultarPrestamoLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(prestamoActual)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 360, Short.MAX_VALUE)
-                .addComponent(logoConsultarPrestamo)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, consultarPrestamoLayout.createSequentialGroup()
+                .addGroup(consultarPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(consultarPrestamoLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(volver4))
+                    .addGroup(consultarPrestamoLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(prestamoActual)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(logoConsultarPrestamo)))
                 .addContainerGap())
         );
 
@@ -735,9 +783,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
         // TODO add your handling code here:
-        PerfilDAOImp perfil = new PerfilDAOImp();
+        PerfilDAOImp perfilDAO = new PerfilDAOImp();
         List<Perfil> aux = new ArrayList();
-        aux = perfil.listar();
+        aux = perfilDAO.listar();
         for (Perfil perfil1 : aux) {
             if (perfil1.getUsuario().equalsIgnoreCase(cuadroTexto.getText())) {
            
@@ -748,7 +796,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     registro.setVisible(false);
                     pantallaDatos.setVisible(true);
                     
-
+                    
+                   idUsuarioLogueado = perfil1.getIdPerfil();
+                   this.perfil  =  perfil1;
                 }
             }
         }
@@ -818,6 +868,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
         // TODO add your handling code here:
+        pantallaInicio.setVisible(false);
+        inicioSesion.setVisible(false);
+        registro.setVisible(false);
+        pantallaDatos.setVisible(false);
+        solicitarPrestamo.setVisible(false);
+        
+//        if(TipoPerfilEnum.CLIENTE.equals(this.perfil.getTipoPerfil())){
+            consultarPrestamo.setVisible(true);
+            rellenarTablaPrestamos(this.idUsuarioLogueado);
+            
+//        }
+        // TODO 
+//        else if (TipoPerfilEnum.BANQUERO.equals(this.perfil.getTipoPerfil())){
+//            consultarUsuarios.setVisible(true);
+//        }
+        
+        
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void botonLiquidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLiquidarActionPerformed
@@ -842,6 +909,48 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         solicitarPrestamo.setVisible(false);
     }//GEN-LAST:event_volver3ActionPerformed
 
+    private void volver4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volver4ActionPerformed
+        // TODO add your handling code here:
+        pantallaInicio.setVisible(false);
+        inicioSesion.setVisible(false);
+        registro.setVisible(false);
+        consultarPrestamo.setVisible(false);
+        pantallaDatos.setVisible(true);
+    }//GEN-LAST:event_volver4ActionPerformed
+    
+    
+    private void rellenarTablaPrestamos(int idUsuarioPrestamos) {
+            try{
+            // llamada a bd para traer los prestamos del usuaro idUsuario
+            PrestamoDAOImp prestamoDAO = new PrestamoDAOImp();
+            List<Prestamo> list = prestamoDAO.listarPorIdUsuario(idUsuarioPrestamos);
+            
+            String[] tituloColumnas = {"Prestamo","Cliente", "Fecha Firma","Cantidad","Periodo en Meses","Tipo de Interes","Plazo en Dias","Estado Prestamo","Movimiento"};
+            Object[][] obj = null;
+            
+            for (int i = 0; i < list.size(); i++) {
+                obj[i][0] = list.get(i).getIdPrestamo();
+                obj[i][1] = list.get(i).getIdCliente();
+                obj[i][2] = list.get(i).getFechaFirma();
+                obj[i][3] = list.get(i).getCantidad();
+                obj[i][4] = list.get(i).getPeriodoMes();
+                obj[i][5] = list.get(i).getTipoInteres();
+                obj[i][6] = list.get(i).getPlazoDias();
+                obj[i][7] = list.get(i).getEstadoPrest();
+                obj[i][8] = list.get(i).getIdMovimiento();
+            }
+            
+            modeloTabla = new DefaultTableModel(null, tituloColumnas);
+            jTable1.setModel(modeloTabla);
+            for (int i = 0; i < obj.length; i++) {
+                modeloTabla.addRow(obj[i]);
+            }
+            
+        }catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        }
+    
     /**
      * @param args the command line arguments
      */
@@ -915,6 +1024,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField introTelefono;
     private javax.swing.JLabel introduceDatos;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblIcono;
     private javax.swing.JLabel localidad;
     private javax.swing.JLabel logoConsultarPrestamo;
@@ -944,5 +1055,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton volver;
     private javax.swing.JButton volver2;
     private javax.swing.JButton volver3;
+    private javax.swing.JButton volver4;
     // End of variables declaration//GEN-END:variables
 }

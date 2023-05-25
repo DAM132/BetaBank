@@ -40,6 +40,27 @@ public class PrestamoDAOImp implements Repositorio<Prestamo> {
         }
         return prestamos;
     }
+    
+     public List<Prestamo> listarPorIdUsuario(int idUsuario) {
+        String sql = "SELECT * FROM prestamos where idCliente = ?";
+        List<Prestamo> prestamos = new LinkedList<>();
+        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            stmt.setInt(1, idUsuario);
+            try ( ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Prestamo prestamo = crearPrestamo(rs);
+                    if (!prestamos.add(prestamo)) {
+                        throw new Exception("error no se ha insertado el objeto");
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("SQLexception: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return prestamos;
+    }
 
     @Override
     public Prestamo porId(int id) {
