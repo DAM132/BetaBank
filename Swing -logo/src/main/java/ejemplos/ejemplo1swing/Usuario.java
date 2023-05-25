@@ -11,8 +11,9 @@ import java.time.format.DateTimeFormatter;
  *
  * @author Ginés
  */
-public class Cliente {
-    private int idCliente;
+public class Usuario {
+    private int idUsuario;
+    private Perfil perfil;
     private String dni;
     private String nombre;
     private String apellidos;
@@ -24,9 +25,11 @@ public class Cliente {
     private boolean casado;
     private double mediaIngreso;
     private boolean activo;
+    private int idPareja;
 
-    public Cliente(int idCliente, String dni, String nombre, String apellidos, String telefono,LocalDate fnac, String domicilio, String localidad, Sexo sexo, boolean casado, double mediaIngreso, boolean activo) {
-        this.idCliente = idCliente;
+    public Usuario(int idUsuario, Perfil perfil, String dni, String nombre, String apellidos, String telefono, LocalDate fnac, String domicilio, String localidad, Sexo sexo, boolean casado, double mediaIngreso, boolean activo, int idPareja) {
+        this.idUsuario = idUsuario;
+        this.perfil = perfil;
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -38,18 +41,29 @@ public class Cliente {
         this.casado = casado;
         this.mediaIngreso = mediaIngreso;
         this.activo = activo;
+        this.idPareja = idPareja;
     }
 
-    public Cliente() {
+    public Usuario() {
     }
 
-    public int getIdCliente() {
-        return idCliente;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
+
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
+    
+    
 
     public String getDni() {
         return dni;
@@ -139,6 +153,14 @@ public class Cliente {
         this.activo = activo;
     }
 
+    public int getIdPareja() {
+        return idPareja;
+    }
+
+    public void setIdPareja(int idPareja) {
+        this.idPareja = idPareja;
+    }
+    
     @Override
     public String toString() {
         DateTimeFormatter ldf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -148,7 +170,7 @@ public class Cliente {
         }else{
             act="No";
         }
-        return "Cliente{" + "idCliente=" + idCliente + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", telefono=" + telefono +", fnac=" + fnac.format(ldf) + ", domicilio=" + domicilio + ", localidad=" + localidad + ", sexo=" + sexo + ", casado=" + casado + ", mediaIngreso=" + mediaIngreso + ", activo=" + act + '}';
+        return "Cliente{" + "idUsuario=" + idUsuario +", perfil" +perfil.getIdPerfil()+ ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", telefono=" + telefono +", fnac=" + fnac.format(ldf) + ", domicilio=" + domicilio + ", localidad=" + localidad + ", sexo=" + sexo + ", casado=" + casado + ", mediaIngreso=" + mediaIngreso + ", activo=" + act + '}';
     }
     
     

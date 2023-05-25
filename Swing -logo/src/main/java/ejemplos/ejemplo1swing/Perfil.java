@@ -15,25 +15,19 @@ public class Perfil {
     private EstadoCivil estadoCiv;
     private EstadoLaboral estadolab;
     private boolean moroso;
-    private int idPareja;
     private TipoPerfilEnum tipoPerfil;
 
- 
-    public Perfil() {
-    }
-    // encaso de que no este casado se guarda -1
-    public Perfil(int idPerfil, String usuario, String contrasena, EstadoCivil estadoCiv, EstadoLaboral estadolab, boolean moroso, int idPareja) {
+    public Perfil(int idPerfil, String usuario, String contrasena, EstadoCivil estadoCiv, EstadoLaboral estadolab, boolean moroso, TipoPerfilEnum tipoPerfil) {
         this.idPerfil = idPerfil;
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.estadoCiv = estadoCiv;
         this.estadolab = estadolab;
         this.moroso = moroso;
-        if (EstadoCivil.CASADO==estadoCiv) {
-            this.idPareja = idPareja;
-        }else{
-            this.idPareja = -1;
-        }  
+        this.tipoPerfil = tipoPerfil;
+    }
+
+    public Perfil() {
     }
 
     public int getIdPerfil() {
@@ -84,15 +78,7 @@ public class Perfil {
         this.moroso = moroso;
     }
 
-    public int getIdPareja() {
-        return idPareja;
-    }
-
-    public void setIdPareja(int idPareja) {
-        this.idPareja = idPareja;
-    }
-    
-       public TipoPerfilEnum getTipoPerfil() {
+    public TipoPerfilEnum getTipoPerfil() {
         return tipoPerfil;
     }
 
@@ -100,19 +86,9 @@ public class Perfil {
         this.tipoPerfil = tipoPerfil;
     }
 
-
     @Override
     public String toString() {
-        String act;
-        if (moroso) {
-            act="Si";
-        }else{
-            act="No";
-        }
-        return "Perfil{" + "idPerfil=" + idPerfil + ", usuario=" + usuario + ", contrasena=" + contrasena + ", estadoCiv=" + estadoCiv + ", estadolab=" + estadolab + ", moroso=" + act + ", idPareja=" + idPareja + '}';
+        return "Perfil{" + "idPerfil=" + idPerfil + ", usuario=" + usuario + ", contrasena=" + contrasena + ", estadoCiv=" + estadoCiv + ", estadolab=" + estadolab + ", moroso=" + moroso + ", tipoPerfil=" + tipoPerfil + '}';
     }
-    
-    
-    
     
 }

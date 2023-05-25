@@ -42,7 +42,7 @@ public class PrestamoDAOImp implements Repositorio<Prestamo> {
     }
     
      public List<Prestamo> listarPorIdUsuario(int idUsuario) {
-        String sql = "SELECT * FROM prestamos where idCliente = ?";
+        String sql = "SELECT * FROM prestamos where idUsuario = ?";
         List<Prestamo> prestamos = new LinkedList<>();
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, idUsuario);
@@ -83,10 +83,10 @@ public class PrestamoDAOImp implements Repositorio<Prestamo> {
 
     @Override
     public void insertar(Prestamo prestamo) {
-        String sql = "INSERT INTO prestamo(idCliente,fechaFirma,periodoMes,cantidad,tipoInteres,plazoDias,estado,idMovimiento) VALUES(?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO prestamo(idUsuario,fechaFirma,periodoMes,cantidad,tipoInteres,plazoDias,estado,idMovimiento) VALUES(?,?,?,?,?,?,?,?)";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             java.sql.Date fechafirma = java.sql.Date.valueOf(prestamo.getFechaFirma());
-            stmt.setInt(1, prestamo.getIdCliente());
+            stmt.setInt(1, prestamo.getIdUsuario());
             stmt.setDate(2, fechafirma);
             stmt.setInt(3, prestamo.getPeriodoMes());
             stmt.setDouble(4, prestamo.getCantidad());
@@ -107,10 +107,10 @@ public class PrestamoDAOImp implements Repositorio<Prestamo> {
 
     @Override
     public void modificar(Prestamo prestamo) {
-        String sql = "UPDATE prestamo SET idCliente=?,fechaFirma=?,periodoMes=?,cantidad=?,tipoInteres=?,plazpDias=?,estado=?,idMovimiento=?  WHERE idPrestamo=?";
+        String sql = "UPDATE prestamo SET idUsuario=?,fechaFirma=?,periodoMes=?,cantidad=?,tipoInteres=?,plazpDias=?,estado=?,idMovimiento=?  WHERE idPrestamo=?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             java.sql.Date fechafirma = java.sql.Date.valueOf(prestamo.getFechaFirma());
-            stmt.setInt(1, prestamo.getIdCliente());
+            stmt.setInt(1, prestamo.getIdUsuario());
             stmt.setDate(2, fechafirma);
             stmt.setInt(3, prestamo.getPeriodoMes());
             stmt.setDouble(4, prestamo.getCantidad());

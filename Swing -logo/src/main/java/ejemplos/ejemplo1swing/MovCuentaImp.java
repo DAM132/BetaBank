@@ -4,6 +4,7 @@
  */
 package ejemplos.ejemplo1swing;
 
+import static ejemplos.ejemplo1swing.MovimientoDAOImp.crearMovimiento;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,22 +14,22 @@ import java.util.List;
 
 /**
  *
- * @author DAM118
+ * @author DAM122
  */
-public class MovimientoDAOImp implements Repositorio<Movimiento> {
+public class MovCuentaImp{
 
-    private static Connection getConnection() {
+     private static Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
     }
-
-    @Override
-    public List<Movimiento> listar() {
-        String sql = "SELECT * FROM movimientos";
-        List<Movimiento> movimientos = new LinkedList<>();
+    
+    
+    public List<MovCuenta> listar() {
+        String sql = "SELECT * FROM movcuenta";
+        List<MovCuenta> movimientosCuenta = new LinkedList<>();
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);  ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
-                Movimiento movimiento = crearMovimiento(rs);
-                if (!movimientos.add(movimiento)) {
+                MovCuenta movimientoCuenta = crearMovCuenta(rs);
+                if (!movimientosCuenta.add(movimientoCuenta)) {
                     throw new Exception("error no se ha insertado el objeto");
                 }
             }
@@ -38,18 +39,17 @@ public class MovimientoDAOImp implements Repositorio<Movimiento> {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        return movimientos;
+        return movimientosCuenta;
     }
-
-    @Override
-    public Movimiento porId(int id) {
-        String sql = "SELECT * FROM movimiento WHERE idMovimientos=?";
-        Movimiento movimiento = null;
+    
+    public MovCuenta getMovCuentaDeUnCliente(String iban) {
+        String sql = "SELECT * FROM movcuenta WHERE numeroCuenta=?";
+        MovCuenta movimientoCuenta = null;
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-            stmt.setInt(1, id);
+            stmt.setString(1, iban);
             try ( ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    movimiento = crearMovimiento(rs);
+                    movimientoCuenta = crearMovCuenta(rs);
                 }
             }
         } catch (SQLException ex) {
@@ -57,20 +57,15 @@ public class MovimientoDAOImp implements Repositorio<Movimiento> {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        return movimiento;
+        return movimientoCuenta;
     }
 
-    @Override
-    public void insertar(Movimiento movimiento) {
-        String sql = "INSERT INTO movimiento(cantidad,concepto,emisor,destinatario,numeroCuenta,fecha) VALUES(?,?,?,?,?,?)";
+    
+    public void insertar(MovCuenta movimientoCuenta) {
+        String sql = "INSERT INTO movcuenta(numeroCuenta,idMovimientos) VALUES(?,?)";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-            java.sql.Date fnac = java.sql.Date.valueOf(movimiento.getFechaMovimiento());
-            stmt.setDouble(1, movimiento.getCantidad());
-            stmt.setString(2, movimiento.getConcepto());
-            stmt.setString(3, movimiento.getEmisor());
-            stmt.setString(4, movimiento.getDestinatario());
-            stmt.setString(5, movimiento.getNumeroCuenta());
-            stmt.setDate(6, fnac);
+            stmt.setString(1, movimientoCuenta.getCuenta().getIban());
+            stmt.setInt(2, movimientoCuenta.getMovimiento().getIdMovimiento());
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception("No se ha conseguido registrar el movimiento");
@@ -82,23 +77,18 @@ public class MovimientoDAOImp implements Repositorio<Movimiento> {
         }
     }
 
-    @Override
-    public void modificar(Movimiento movimiento) {
-        String sql = "UPDATE movimiento SET cantidad=?,concepto=?,emisor=?,destinatario=?,numeroCuenta=?,fecha=?  WHERE idMovimiento=?";
+   
+    public void modificar(MovCuenta movimientoCuenta) {
+        String sql = "UPDATE movcuenta SET numeroCuenta=?,idMovimientos=? idMovCuenta=?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-            java.sql.Date fnac = java.sql.Date.valueOf(movimiento.getFechaMovimiento());
-            stmt.setDouble(1, movimiento.getCantidad());
-            stmt.setString(2, movimiento.getConcepto());
-            stmt.setString(3, movimiento.getEmisor());
-            stmt.setString(4, movimiento.getDestinatario());
-            stmt.setString(5, movimiento.getNumeroCuenta());
-            stmt.setDate(6, fnac);
-            stmt.setInt(7, movimiento.getIdMovimiento());
+            stmt.setString(1, movimientoCuenta.getCuenta().getIban());
+            stmt.setInt(2, movimientoCuenta.getMovimiento().getIdMovimiento());
+            stmt.setInt(3, movimientoCuenta.getIdMovCuenta());
             int salida = stmt.executeUpdate();
             if (salida != 1) {
-                throw new Exception("No se ha modificado el cliente");
+                throw new Exception("No se ha modificado el movimiento");
             } else {
-                System.out.println("Se ha modificado el cliente");
+                System.out.println("Se ha modificado el movimiento");
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -107,25 +97,28 @@ public class MovimientoDAOImp implements Repositorio<Movimiento> {
         }
     }
 
-    @Override
+    
     public void eliminar(int id) {
-        String sql = "DELETE FROM movimiento WHERE idMovimientos=?";
+        String sql = "DELETE FROM movcuenta WHERE idMovCuenta=?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
             int borrado = stmt.executeUpdate();
             if (borrado != 1) {
-                throw new Exception("No se ha borrado el cliente");
+                throw new Exception("No se ha borrado el movimiento");
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-
     }
-
-    public static Movimiento crearMovimiento(ResultSet rs) throws SQLException {
-        return new Movimiento(rs.getInt("idMovimientos"), rs.getDouble("cantidad"), rs.getString("concepto"), rs.getString("emisor"), rs.getString("destinatario"), rs.getDate("fecha").toLocalDate(), rs.getString("numeroCuenta"));
+    
+    public static MovCuenta crearMovCuenta(ResultSet rs) throws SQLException {
+        CuentaImp cuentaImp = new CuentaImp();
+        Cuenta cuenta = cuentaImp.getDatosCuenta(rs.getString("numeroCuenta"));
+        MovimientoDAOImp movimientoDAO = new MovimientoDAOImp();
+        Movimiento movimiento = movimientoDAO.porId(rs.getInt("idMovimientos"));
+        return new MovCuenta(rs.getInt("idMovimientos"), cuenta, movimiento);
     }
-
+    
 }

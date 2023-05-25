@@ -23,7 +23,7 @@ public class PerfilDAOImp implements Repositorio<Perfil> {
 
     @Override
     public List<Perfil> listar() {
-        String sql = "SELECT idPerfil,usuario,contraseña,estadoCivil,estadoLaboral,moroso,idPareja FROM perfil";
+        String sql = "SELECT idPerfil,usuario,contraseña,estadoCivil,estadoLaboral,moroso,tipoPerfil FROM perfil";
         List<Perfil> perfiles = new LinkedList<>();
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);  ResultSet rs = stmt.executeQuery()) {
 
@@ -63,14 +63,14 @@ public class PerfilDAOImp implements Repositorio<Perfil> {
 
     @Override
     public void insertar(Perfil perfil) {
-        String sql = "INSERT INTO perfil(usuario,contraseña,estadoCivil,estadoLaboral,moroso,idPareja) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO perfil(usuario,contraseña,estadoCivil,estadoLaboral,moroso,tipoPerfil) VALUES(?,?,?,?,?,?)";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setString(1, perfil.getUsuario());
             stmt.setString(2, perfil.getContrasena());
             stmt.setString(3, String.valueOf(perfil.getEstadoCiv()));
             stmt.setString(4, String.valueOf(perfil.getEstadolab()));
             stmt.setBoolean(5, perfil.isMoroso());
-            stmt.setInt(6, perfil.getIdPareja());
+            stmt.setString(6, String.valueOf(perfil.getTipoPerfil()));
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception("No se ha conseguido registrar el perfil del cliente");
@@ -84,14 +84,14 @@ public class PerfilDAOImp implements Repositorio<Perfil> {
 
     @Override
     public void modificar(Perfil perfil) {
-        String sql = "UPDATE perfil SET usuario=?,contraseña=?,estadoCivil=?,estadoLaboral=?,moroso=?,idPareja=? WHERE idPerfil=?";
+        String sql = "UPDATE perfil SET usuario=?,contraseña=?,estadoCivil=?,estadoLaboral=?,moroso=?,tipoPerfil=? WHERE idPerfil=?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setString(1, perfil.getUsuario());
             stmt.setString(2, perfil.getContrasena());
             stmt.setString(3, String.valueOf(perfil.getEstadoCiv()));
             stmt.setString(4, String.valueOf(perfil.getEstadolab()));
             stmt.setBoolean(5, perfil.isMoroso());
-            stmt.setInt(6, perfil.getIdPareja());
+            stmt.setString(6, String.valueOf(perfil.getTipoPerfil()));
             stmt.setInt(7, perfil.getIdPerfil());
             int salida = stmt.executeUpdate();
             if (salida != 1) {
@@ -123,8 +123,7 @@ public class PerfilDAOImp implements Repositorio<Perfil> {
     }
 
     public static Perfil crearPerfil(ResultSet rs) throws SQLException {
-        Perfil perfil = new Perfil(rs.getInt("idPerfil"), rs.getString("usuario"), rs.getString("contraseña"), EstadoCivil.valueOf(rs.getString("estadoCivil").toUpperCase()), EstadoLaboral.valueOf(rs.getString("estadoLaboral").toUpperCase()), rs.getBoolean("moroso"), rs.getInt("idPareja"));
+        Perfil perfil = new Perfil(rs.getInt("idPerfil"), rs.getString("usuario"), rs.getString("contraseña"), EstadoCivil.valueOf(rs.getString("estadoCivil").toUpperCase()), EstadoLaboral.valueOf(rs.getString("estadoLaboral").toUpperCase()), rs.getBoolean("moroso"),  TipoPerfilEnum.valueOf(rs.getString("tipoPerfil").toUpperCase()));
         return perfil;
-    }
-
+    }  
 }
