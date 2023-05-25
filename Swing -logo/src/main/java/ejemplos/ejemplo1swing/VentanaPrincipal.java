@@ -22,8 +22,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private int idUsuarioLogueado;
     private Perfil perfil;
     private List<Prestamo> prestamos = new ArrayList<>();
-    private int prueba=10;
-    
+    private int prueba = 10;
+
     /**
      * Creates new form VentanaPrincipal
      */
@@ -35,10 +35,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         modeloTabla = (DefaultTableModel) jTable1.getModel();
 
     }
-    
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,6 +73,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonModificar = new javax.swing.JButton();
         botonNominas = new javax.swing.JButton();
         logoOpciones = new javax.swing.JLabel();
+        cerrarSesion = new javax.swing.JButton();
         registro = new javax.swing.JPanel();
         panelDatos = new javax.swing.JPanel();
         DNI = new javax.swing.JLabel();
@@ -190,7 +187,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(pantallaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pantallaInicioLayout.createSequentialGroup()
                     .addGap(55, 55, 55)
-                    .addComponent(lblIcono, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                    .addComponent(lblIcono, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
                     .addGap(56, 56, 56)))
         );
 
@@ -327,6 +324,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         logoOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/logo2.jpg"))); // NOI18N
 
+        cerrarSesion.setText("Cerrar sesion");
+        cerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarSesionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout opcionesUsuarioLayout = new javax.swing.GroupLayout(opcionesUsuario);
         opcionesUsuario.setLayout(opcionesUsuarioLayout);
         opcionesUsuarioLayout.setHorizontalGroup(
@@ -350,6 +355,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(opcionesUsuarioLayout.createSequentialGroup()
                         .addComponent(logoOpciones)
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, opcionesUsuarioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cerrarSesion)
+                .addGap(31, 31, 31))
         );
         opcionesUsuarioLayout.setVerticalGroup(
             opcionesUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,7 +372,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(opcionesUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonModificar)
                     .addComponent(botonNominas))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addComponent(cerrarSesion)
+                .addGap(7, 7, 7)
                 .addComponent(logoOpciones)
                 .addContainerGap())
         );
@@ -373,17 +384,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pantallaDatosLayout.setHorizontalGroup(
             pantallaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(opcionesUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pantallaDatosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bienvenido)
-                .addGap(137, 137, 137))
             .addGroup(pantallaDatosLayout.createSequentialGroup()
-                .addGap(241, 241, 241)
                 .addGroup(pantallaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pantallaDatosLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(iban))
-                    .addComponent(saldo))
+                        .addGap(241, 241, 241)
+                        .addGroup(pantallaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pantallaDatosLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(iban))
+                            .addComponent(saldo)))
+                    .addGroup(pantallaDatosLayout.createSequentialGroup()
+                        .addGap(233, 233, 233)
+                        .addComponent(bienvenido)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pantallaDatosLayout.setVerticalGroup(
@@ -786,33 +798,40 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
         // TODO add your handling code here:
         PerfilDAOImp perfilDAO = new PerfilDAOImp();
+        UsuarioDAOImp usuarioDAO = new UsuarioDAOImp();
+        CuentaImp cuentaImp = new CuentaImp();
         List<Perfil> aux = new ArrayList();
         aux = perfilDAO.listar();
-        System.out.println("muestro " +perfilDAO.porUsuario("gi94"));
+        JFrame errorlogin = new JFrame();
+        boolean encontrado = false;
         for (Perfil perfil1 : aux) {
-            System.out.println(perfil1.toString());
-            if (perfil1.getUsuario().equalsIgnoreCase(cuadroTexto.getText())&&perfil1.getContrasena().equalsIgnoreCase(cuadroContraseña.getText())) {
-              
 
-               
-                    pantallaInicio.setVisible(false);
-                    inicioSesion.setVisible(false);
-                    registro.setVisible(false);
-                    pantallaDatos.setVisible(true);
-                    
-                   idUsuarioLogueado= 10;
-                   this.perfil=perfil1;
-                   //bienvenido.setText("Bienvenido " );
-                 
-                   
-                
+            if (perfil1.getUsuario().equalsIgnoreCase(cuadroTexto.getText()) && perfil1.getContrasena().equalsIgnoreCase(cuadroContraseña.getText())) {
+
+                pantallaInicio.setVisible(false);
+                inicioSesion.setVisible(false);
+                registro.setVisible(false);
+                pantallaDatos.setVisible(true);
+
+                this.perfil = perfil1;
+
+                Usuario usuario = usuarioDAO.porId(perfil.getIdPerfil());
+                bienvenido.setText("Bienvenido " + usuario.getNombre());
+                System.out.println("usuario " + usuario.getNombre());
+                Cuenta cuenta = cuentaImp.porId(perfil1.getIdPerfil());
+
+                saldo.setText("Saldo " + cuenta.getSaldo() + "€");
+                iban.setText(cuenta.getIban());
+
+                encontrado = true;
+
             }
-            else{
-                 JFrame jFrame = new JFrame();
-        JOptionPane.showMessageDialog(jFrame, "Usuario incorrecto/ password incorrecto");
-            }
+
         }
-
+        if (!encontrado) {
+            JOptionPane.showMessageDialog(errorlogin, "Usuario o contraseña Incorrecto");
+            
+        }
 
     }//GEN-LAST:event_entrarActionPerformed
 
@@ -883,17 +902,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         registro.setVisible(false);
         pantallaDatos.setVisible(false);
         solicitarPrestamo.setVisible(false);
-        
+
 //        if(TipoPerfilEnum.CLIENTE.equals(this.perfil.getTipoPerfil())){
-            consultarPrestamo.setVisible(true);
-            rellenarTablaPrestamos(this.idUsuarioLogueado);
+        consultarPrestamo.setVisible(true);
+        rellenarTablaPrestamos(this.idUsuarioLogueado);
 //        }
         // TODO 
 //        else if (TipoPerfilEnum.BANQUERO.equals(this.perfil.getTipoPerfil())){
 //            consultarUsuarios.setVisible(true);
 //        }
-        
-        
+
+
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void botonLiquidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLiquidarActionPerformed
@@ -926,17 +945,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         consultarPrestamo.setVisible(false);
         pantallaDatos.setVisible(true);
     }//GEN-LAST:event_volver4ActionPerformed
-    
-    
+
+    private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionActionPerformed
+        // TODO add your handling code here:
+        pantallaInicio.setVisible(false);
+        inicioSesion.setVisible(true);
+        registro.setVisible(false);
+        consultarPrestamo.setVisible(false);
+        pantallaDatos.setVisible(false);
+        cuadroTexto.setText("");
+        cuadroContraseña.setText("");
+    }//GEN-LAST:event_cerrarSesionActionPerformed
+
     private void rellenarTablaPrestamos(int idUsuarioPrestamos) {
-            try{
+        try {
             // llamada a bd para traer los prestamos del usuaro idUsuario
             PrestamoDAOImp prestamoDAO = new PrestamoDAOImp();
             List<Prestamo> list = prestamoDAO.listarPorIdUsuario(idUsuarioPrestamos);
-            
-            String[] tituloColumnas = {"Prestamo","Cliente", "Fecha Firma","Cantidad","Periodo en Meses","Tipo de Interes","Plazo en Dias","Estado Prestamo","Movimiento"};
+
+            String[] tituloColumnas = {"Prestamo", "Cliente", "Fecha Firma", "Cantidad", "Periodo en Meses", "Tipo de Interes", "Plazo en Dias", "Estado Prestamo", "Movimiento"};
             Object[][] obj = null;
-            
+
             for (int i = 0; i < list.size(); i++) {
                 obj[i][0] = list.get(i).getIdPrestamo();
                 obj[i][1] = list.get(i).getIdUsuario();
@@ -948,18 +977,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 obj[i][7] = list.get(i).getEstadoPrest();
                 obj[i][8] = list.get(i).getIdMovimiento();
             }
-            
+
             modeloTabla = new DefaultTableModel(null, tituloColumnas);
             jTable1.setModel(modeloTabla);
             for (int i = 0; i < obj.length; i++) {
                 modeloTabla.addRow(obj[i]);
             }
-            
-        }catch (Exception ex) {
+
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        }
-    
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -1006,6 +1035,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botonNominas;
     private javax.swing.JButton botonSolicitar;
     private javax.swing.JLabel cantidad;
+    private javax.swing.JButton cerrarSesion;
     private javax.swing.JPanel consultarPrestamo;
     private javax.swing.JPasswordField cuadroContraseña;
     private javax.swing.JTextField cuadroTexto;
