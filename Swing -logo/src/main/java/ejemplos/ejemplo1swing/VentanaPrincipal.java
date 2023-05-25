@@ -4,8 +4,10 @@
  */
 package ejemplos.ejemplo1swing;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -834,7 +836,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_introLocalidadActionPerformed
 
     private void enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarActionPerformed
-        // TODO add your handling code here:
+        ClienteDAOImp cli = new ClienteDAOImp();
+        boolean cas;
+        StringTokenizer st = new StringTokenizer(introFecha.getText(), "/");
+        int dia= Integer.valueOf(st.nextToken());
+        int mes= Integer.valueOf(st.nextToken());
+        int anio=Integer.valueOf(st.nextToken());
+        LocalDate fechaNac=LocalDate.of(anio, mes, dia);
+        String x = introEstado.getSelectedItem().toString().toUpperCase();
+        String y = introSexo.getSelectedItem().toString().toUpperCase();
+        Sexo s = Sexo.valueOf(y);
+        EstadoCivil a = EstadoCivil.valueOf(x);
+        System.out.println(a.toString());
+        if (a.equals(EstadoCivil.CASADO)) {
+            cas=true;
+        } else {
+            cas=false;
+        }
+        Cliente c1 = new Cliente(1,introDNI.getText(),introNombre.getName(),introApellidos.getText(),introTelefono.getText(),fechaNac,introDomicilio.getText(),introLocalidad.getText(),s,cas,0,true);
+        cli.insertar(c1);
         pantallaInicio.setVisible(false);
         inicioSesion.setVisible(false);
         registro.setVisible(false);
