@@ -128,8 +128,29 @@ public class PerfilDAOImp implements Repositorio<Perfil> {
 
     }
     
+    public int porUsuario(String nperfil){
+         String sql = "SELECT idPerfil FROM perfil WHERE usuario=?";
+         int idPerfil = 0;
+        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            stmt.setString(1, nperfil);
+            try ( ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                   
+                   idPerfil=rs.getInt("idPerfil");
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("SQLexception: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return idPerfil; 
+    }
+        
+    }
+    
     
 
-}
+
 
 

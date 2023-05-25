@@ -788,6 +788,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         PerfilDAOImp perfilDAO = new PerfilDAOImp();
         List<Perfil> aux = new ArrayList();
         aux = perfilDAO.listar();
+        System.out.println("muestro " +perfilDAO.porUsuario("gi94"));
         for (Perfil perfil1 : aux) {
             System.out.println(perfil1.toString());
             if (perfil1.getUsuario().equalsIgnoreCase(cuadroTexto.getText())&&perfil1.getContrasena().equalsIgnoreCase(cuadroContraseña.getText())) {
@@ -801,7 +802,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     
                    idUsuarioLogueado= 10;
                    this.perfil=perfil1;
-                   //bienvenido.setText();
+                   //bienvenido.setText("Bienvenido " );
+                 
                    
                 
             }
