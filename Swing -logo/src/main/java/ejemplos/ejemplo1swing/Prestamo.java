@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 public class Prestamo {
 
     private int idPrestamo;
-    private int idCliente;
+    private int idUsuario;
     private LocalDate fechaFirma;
     private double cantidad;
     private int PeriodoMes;
@@ -23,9 +23,9 @@ public class Prestamo {
     private EstadoPrestamo EstadoPrest;
     private int idMovimiento;
 
-    public Prestamo(int idPrestamo, int idCliente, LocalDate fechaFirma, double cantidad, int PeriodoMes, double tipoInteres, int PlazoDias, EstadoPrestamo EstadoPrest, int idMovimiento) {
+    public Prestamo(int idPrestamo, int idUsuario, LocalDate fechaFirma, double cantidad, int PeriodoMes, double tipoInteres, int PlazoDias, EstadoPrestamo EstadoPrest, int idMovimiento) {
         this.idPrestamo = idPrestamo;
-        this.idCliente = idCliente;
+        this.idUsuario = idUsuario;
         this.fechaFirma = fechaFirma;
         this.cantidad = cantidad;
         this.PeriodoMes = PeriodoMes;
@@ -46,12 +46,12 @@ public class Prestamo {
         this.idPrestamo = idPrestamo;
     }
 
-    public int getIdCliente() {
-        return idCliente;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public LocalDate getFechaFirma() {
@@ -114,7 +114,7 @@ public class Prestamo {
     public String toString() {
         
         DateTimeFormatter ldf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return "Prestamo{" + "idPrestamo=" + idPrestamo + ", idCliente=" + idCliente + ", fechaFirma=" + fechaFirma.format(ldf) + ", cantidad=" + cantidad + ", PeriodoMes=" + PeriodoMes + ", tipoInteres=" + tipoInteres + ", PlazoDias=" + PlazoDias + ", EstadoPrest=" + EstadoPrest +", idMovimiento=" + idMovimiento +'}';
+        return "Prestamo{" + "idPrestamo=" + idPrestamo + ", idUsuario=" + idUsuario + ", fechaFirma=" + fechaFirma.format(ldf) + ", cantidad=" + cantidad + ", PeriodoMes=" + PeriodoMes + ", tipoInteres=" + tipoInteres + ", PlazoDias=" + PlazoDias + ", EstadoPrest=" + EstadoPrest +", idMovimiento=" + idMovimiento +'}';
     }
     
     

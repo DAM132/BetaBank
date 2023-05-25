@@ -12,15 +12,15 @@ import java.time.format.DateTimeFormatter;
  * @author Ginés
  */
 public class Movimiento {
-        private int idMovimiento;
+    private int idMovimiento;
     private double cantidad;
     private String concepto;
     private String emisor;
-    private Cliente destinatario;
+    private String destinatario;
     private LocalDate fechaMovimiento;
     private String numeroCuenta;
 
-    public Movimiento(int idMovimiento, double cantidad, String concepto, String emisor, Cliente destinatario, LocalDate fechaMovimiento, String numeroCuenta) {
+    public Movimiento(int idMovimiento, double cantidad, String concepto, String emisor, String destinatario, LocalDate fechaMovimiento, String numeroCuenta) {
         this.idMovimiento = idMovimiento;
         this.cantidad = cantidad;
         this.concepto = concepto;
@@ -65,11 +65,11 @@ public class Movimiento {
         this.emisor = emisor;
     }
 
-    public Cliente getDestinatario() {
+    public String getDestinatario() {
         return destinatario;
     }
 
-    public void setDestinatario(Cliente destinatario) {
+    public void setDestinatario(String destinatario) {
         this.destinatario = destinatario;
     }
 
