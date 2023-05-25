@@ -885,7 +885,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 //        if(TipoPerfilEnum.CLIENTE.equals(this.perfil.getTipoPerfil())){
             consultarPrestamo.setVisible(true);
             rellenarTablaPrestamos(this.idUsuarioLogueado);
-            
 //        }
         // TODO 
 //        else if (TipoPerfilEnum.BANQUERO.equals(this.perfil.getTipoPerfil())){
@@ -938,7 +937,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             
             for (int i = 0; i < list.size(); i++) {
                 obj[i][0] = list.get(i).getIdPrestamo();
-                obj[i][1] = list.get(i).getIdCliente();
+                obj[i][1] = list.get(i).getIdUsuario();
                 obj[i][2] = list.get(i).getFechaFirma();
                 obj[i][3] = list.get(i).getCantidad();
                 obj[i][4] = list.get(i).getPeriodoMes();

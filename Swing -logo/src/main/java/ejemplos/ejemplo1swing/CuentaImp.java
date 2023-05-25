@@ -83,7 +83,7 @@ public class CuentaImp {
     }
 
     public static void abrirCuenta(Cuenta cuenta) {
-        String sql = "INSERT INTO cuenta(iban,tipoCuenta,saldo,ingresos,media,idCliente) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO cuenta(iban,tipoCuenta,saldo,ingresos,media,idUsuario) VALUES(?,?,?,?,?)";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setString(1, cuenta.getIban());
             stmt.setString(2, cuenta.getTipoCuenta());
@@ -102,7 +102,7 @@ public class CuentaImp {
     }
 
     public static void borrarCuenta(String iban, int idCliente) {
-        String sql = "DELETE FROM cuenta WHERE iban=? and idCliente=?";
+        String sql = "DELETE FROM cuenta WHERE iban=? and idUsuario=?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setString(1, iban);
             stmt.setInt(2, idCliente);
@@ -118,14 +118,14 @@ public class CuentaImp {
     }
 
     public void modificarCuenta(Cuenta cuenta) {
-         String sql = "UPDATE cuenta SET iban=?,tipoCuenta=?,saldo=?,ingresos=?,fnac=?,media=? WHERE idCliente=?";
+         String sql = "UPDATE cuenta SET iban=?,tipoCuenta=?,saldo=?,ingresos=?,fnac=?,media=? WHERE idUsuario=?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setString(1, cuenta.getIban());
             stmt.setString(2, cuenta.getTipoCuenta());
             stmt.setDouble(3, cuenta.getSaldo());
             stmt.setDouble(4, cuenta.getIngresos());
             stmt.setDouble(5, cuenta.getMedia());
-            stmt.setInt(6, cuenta.getCliente().getIdCliente());
+            stmt.setInt(6, cuenta.getUsuario().getIdUsuario());
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception("No se ha modificado el cliente");
@@ -141,8 +141,8 @@ public class CuentaImp {
     
 
     public static Cuenta crearCuenta(ResultSet rs) throws SQLException {
-        ClienteDAOImp clienteAux = new ClienteDAOImp();
-        Cliente cliente = clienteAux.porId(rs.getInt("idCliente"));
+        UsuarioDAOImp clienteAux = new UsuarioDAOImp();
+        Usuario cliente = clienteAux.porId(rs.getInt("idUsuario"));
         Cuenta cuenta = new Cuenta(rs.getString("iban"), rs.getString("tipoCuenta"), rs.getDouble("saldo"), rs.getDouble("ingresos"), rs.getDouble("media"), cliente);
         return cuenta;
     }

@@ -14,18 +14,18 @@ public class Cuenta {
     private double saldo;
     private double ingresos; 
     private double media;
-    private Cliente cliente;
+    private Usuario usuario;
 
     public Cuenta() {
     }
     
-    public Cuenta(String iban, String tipoCuenta, double saldo, double ingresos, double media, Cliente cliente) {
+    public Cuenta(String iban, String tipoCuenta, double saldo, double ingresos, double media, Usuario usuario) {
         this.iban = iban;
         this.tipoCuenta = tipoCuenta;
         this.saldo = saldo;
         this.ingresos = ingresos;
         this.media = media;
-        this.cliente = cliente;
+        this.usuario = usuario;
     }
 
     public String getIban() {
@@ -68,16 +68,16 @@ public class Cuenta {
         this.media = media;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override
     public String toString() {
-        return "Cuenta{" + "iban=" + iban + ", tipoCuenta=" + tipoCuenta + ", saldo=" + saldo + ", ingresos=" + ingresos + ", media=" + media + ", cliente=" + cliente + '}';
+        return "Cuenta{" + "iban=" + iban + ", tipoCuenta=" + tipoCuenta + ", saldo=" + saldo + ", ingresos=" + ingresos + ", media=" + media + ", usuario=" + usuario + '}';
     }
 }
