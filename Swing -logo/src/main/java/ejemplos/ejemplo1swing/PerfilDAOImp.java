@@ -125,13 +125,11 @@ public class PerfilDAOImp implements Repositorio<Perfil> {
     public static Perfil crearPerfil(ResultSet rs) throws SQLException {
         Perfil perfil = new Perfil(rs.getInt("idPerfil"), rs.getString("usuario"), rs.getString("contraseña"), EstadoCivil.valueOf(rs.getString("estadoCivil").toUpperCase()), EstadoLaboral.valueOf(rs.getString("estadoLaboral").toUpperCase()), rs.getBoolean("moroso"),  TipoPerfilEnum.valueOf(rs.getString("tipoPerfil").toUpperCase()));
         return perfil;
-<<<<<<< HEAD
+
     }
     
     
 
 }
-=======
-    }  
-}
->>>>>>> f08bafe538a891cbce66d5acbb9e92d7bbfa0d53
+
+
