@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -797,9 +798,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     pantallaDatos.setVisible(true);
                     
                     
-                   idUsuarioLogueado = perfil1.getIdPerfil();
-                   this.perfil  =  perfil1;
+                   
                 }
+            }
+            else{
+                 JFrame jFrame = new JFrame();
+        JOptionPane.showMessageDialog(jFrame, "Hello there! How are you today?");
             }
         }
 
