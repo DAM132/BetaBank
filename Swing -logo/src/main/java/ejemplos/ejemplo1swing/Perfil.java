@@ -15,8 +15,10 @@ public class Perfil {
     private EstadoCivil estadoCiv;
     private EstadoLaboral estadolab;
     private boolean moroso;
-    private int idPareja; 
+    private int idPareja;
+    private TipoPerfilEnum tipoPerfil;
 
+ 
     public Perfil() {
     }
     // encaso de que no este casado se guarda -1
@@ -31,8 +33,7 @@ public class Perfil {
             this.idPareja = idPareja;
         }else{
             this.idPareja = -1;
-        }
-        
+        }  
     }
 
     public int getIdPerfil() {
@@ -90,6 +91,15 @@ public class Perfil {
     public void setIdPareja(int idPareja) {
         this.idPareja = idPareja;
     }
+    
+       public TipoPerfilEnum getTipoPerfil() {
+        return tipoPerfil;
+    }
+
+    public void setTipoPerfil(TipoPerfilEnum tipoPerfil) {
+        this.tipoPerfil = tipoPerfil;
+    }
+
 
     @Override
     public String toString() {
@@ -101,6 +111,8 @@ public class Perfil {
         }
         return "Perfil{" + "idPerfil=" + idPerfil + ", usuario=" + usuario + ", contrasena=" + contrasena + ", estadoCiv=" + estadoCiv + ", estadolab=" + estadolab + ", moroso=" + act + ", idPareja=" + idPareja + '}';
     }
+    
+    
     
     
 }

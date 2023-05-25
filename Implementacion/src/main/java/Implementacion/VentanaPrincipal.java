@@ -96,6 +96,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         introCuotas = new javax.swing.JTextField();
         consultarPrestamo = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        volver4 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         barraMenu = new javax.swing.JMenuBar();
         opciones = new javax.swing.JMenu();
         salir = new javax.swing.JMenuItem();
@@ -658,6 +661,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("SU PRESTAMO ACTUAL ES: ");
 
+        volver4.setText("Volver");
+        volver4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        volver4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volver4ActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout consultarPrestamoLayout = new javax.swing.GroupLayout(consultarPrestamo);
         consultarPrestamo.setLayout(consultarPrestamoLayout);
         consultarPrestamoLayout.setHorizontalGroup(
@@ -666,13 +687,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addContainerGap(499, Short.MAX_VALUE))
+            .addGroup(consultarPrestamoLayout.createSequentialGroup()
+                .addGap(129, 129, 129)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, consultarPrestamoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(volver4)
+                .addGap(14, 14, 14))
         );
         consultarPrestamoLayout.setVerticalGroup(
             consultarPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(consultarPrestamoLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel3)
-                .addContainerGap(395, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addComponent(volver4)
+                .addContainerGap())
         );
 
         getContentPane().add(consultarPrestamo, "card7");
@@ -799,6 +832,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         solicitarPrestamo.setVisible(false);
     }//GEN-LAST:event_volver3ActionPerformed
 
+    private void volver4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volver4ActionPerformed
+        // TODO add your handling code here:
+         pantallaInicio.setVisible(false);
+        inicioSesion.setVisible(false);
+        registro.setVisible(false);
+        consultarPrestamo.setVisible(false);
+        pantallaDatos.setVisible(true);
+    }//GEN-LAST:event_volver4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -875,6 +917,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanelDatosPropietario;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblIcono;
     private javax.swing.JLabel localidad;
     private javax.swing.JLabel logo2;
@@ -898,5 +942,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton volver;
     private javax.swing.JButton volver2;
     private javax.swing.JButton volver3;
+    private javax.swing.JButton volver4;
     // End of variables declaration//GEN-END:variables
 }
