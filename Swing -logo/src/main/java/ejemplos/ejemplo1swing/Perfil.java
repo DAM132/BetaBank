@@ -17,6 +17,9 @@ public class Perfil {
     private boolean moroso;
     private TipoPerfilEnum tipoPerfil;
 
+    public Perfil() {
+    }
+
     public Perfil(int idPerfil, String usuario, String contrasena, EstadoCivil estadoCiv, EstadoLaboral estadolab, boolean moroso, TipoPerfilEnum tipoPerfil) {
         this.idPerfil = idPerfil;
         this.usuario = usuario;
@@ -26,9 +29,7 @@ public class Perfil {
         this.moroso = moroso;
         this.tipoPerfil = tipoPerfil;
     }
-
-    public Perfil() {
-    }
+   
 
     public int getIdPerfil() {
         return idPerfil;
