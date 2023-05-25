@@ -11,6 +11,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.time.LocalDate;
+import java.util.StringTokenizer;
+
 
 /**
  *
@@ -96,6 +99,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         introSexo = new javax.swing.JComboBox<>();
         estadoLaboral = new javax.swing.JLabel();
         introEstadoLaboral = new javax.swing.JComboBox<>();
+        introUsuario = new javax.swing.JTextField();
+        introContra = new javax.swing.JTextField();
+        isPareja = new javax.swing.JCheckBox();
+        introDNIpareja = new javax.swing.JTextField();
         enviar = new javax.swing.JButton();
         volver2 = new javax.swing.JButton();
         introduceDatos = new javax.swing.JLabel();
@@ -474,6 +481,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         introEstadoLaboral.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empleado", "Desempleado", " " }));
 
+        introUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                introUsuarioActionPerformed(evt);
+            }
+        });
+
+        isPareja.setLabel("¿Cliente es pareja?");
+
+        introDNIpareja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                introDNIparejaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelDatosLayout = new javax.swing.GroupLayout(panelDatos);
         panelDatos.setLayout(panelDatosLayout);
         panelDatosLayout.setHorizontalGroup(
@@ -489,11 +510,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(apellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(introDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(introNombre)
-                                .addComponent(introApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE))
-                            .addComponent(introTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panelDatosLayout.createSequentialGroup()
+                                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(introNombre)
+                                    .addComponent(introApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(introContra)
+                                    .addGroup(panelDatosLayout.createSequentialGroup()
+                                        .addComponent(isPareja)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(panelDatosLayout.createSequentialGroup()
+                                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelDatosLayout.createSequentialGroup()
+                                        .addComponent(introDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(introUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelDatosLayout.createSequentialGroup()
+                                        .addComponent(introTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(introDNIpareja, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(panelDatosLayout.createSequentialGroup()
                         .addComponent(fecha)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -518,7 +555,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(estadoLaboral)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(introEstadoLaboral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelDatosLayout.setVerticalGroup(
             panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -526,19 +563,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DNI)
-                    .addComponent(introDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(introDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(introUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombre)
-                    .addComponent(introNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(introNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(introContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(apellidos)
-                    .addComponent(introApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(introApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(isPareja))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(telefono)
-                    .addComponent(introTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(introTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(introDNIpareja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fecha)
@@ -606,7 +647,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(registroLayout.createSequentialGroup()
                         .addGap(202, 202, 202)
                         .addComponent(introduceDatos)))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         registroLayout.setVerticalGroup(
             registroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -863,7 +904,35 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_introLocalidadActionPerformed
 
     private void enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarActionPerformed
-        // TODO add your handling code here:
+        UsuarioDAOImp usua = new UsuarioDAOImp();
+        PerfilDAOImp perf = new PerfilDAOImp();
+        boolean cas;
+        StringTokenizer st = new StringTokenizer(introFecha.getText(), "/");
+        int dia = Integer.valueOf(st.nextToken());
+        int mes = Integer.valueOf(st.nextToken());
+        int anio = Integer.valueOf(st.nextToken());
+        LocalDate fechaNac = LocalDate.of(anio, mes, dia);
+        String x = introEstado.getSelectedItem().toString().toUpperCase();
+        String val = introSexo.getSelectedItem().toString().toUpperCase();
+        Sexo se = null;
+        if (val.startsWith("H")) {
+            se = Sexo.H;
+        } else if (val.startsWith("M")) {
+            se = Sexo.M;
+        }
+        EstadoCivil estCivil = EstadoCivil.valueOf(x);
+        EstadoLaboral estLaboral = EstadoLaboral.valueOf(introEstadoLaboral.getSelectedItem().toString().toUpperCase());
+        System.out.println(estCivil.toString());
+        cas = estCivil.equals(EstadoCivil.CASADO);
+        Perfil p1 = new Perfil(1,introUsuario.getText(),introContra.getText(),estCivil,estLaboral,false,TipoPerfilEnum.CLIENTE);
+        perf.insertar(p1);
+        p1.setIdPerfil(perf.porUsuario(p1.getUsuario()));
+        int idP = 0;
+        if (isPareja.isSelected()) {
+            idP = usua.porDNI(introDNIpareja.getText()).getIdUsuario();
+        }
+        Usuario c1 = new Usuario(1, p1, introDNI.getText(), introNombre.getText(), introApellidos.getText(), introTelefono.getText(), fechaNac, introDomicilio.getText(), introLocalidad.getText(), se, cas, 0.0, true, idP);
+        usua.insertar(c1);
         pantallaInicio.setVisible(false);
         inicioSesion.setVisible(false);
         registro.setVisible(false);
@@ -956,6 +1025,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         cuadroTexto.setText("");
         cuadroContraseña.setText("");
     }//GEN-LAST:event_cerrarSesionActionPerformed
+
+    private void introUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_introUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_introUsuarioActionPerformed
+
+    private void introDNIparejaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_introDNIparejaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_introDNIparejaActionPerformed
 
     private void rellenarTablaPrestamos(int idUsuarioPrestamos) {
         try {
@@ -1051,8 +1128,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel inicioSesion;
     private javax.swing.JTextField introApellidos;
     private javax.swing.JTextField introCantidadd;
+    private javax.swing.JTextField introContra;
     private javax.swing.JTextField introCuotas;
     private javax.swing.JTextField introDNI;
+    private javax.swing.JTextField introDNIpareja;
     private javax.swing.JTextField introDomicilio;
     private javax.swing.JComboBox<String> introEstado;
     private javax.swing.JComboBox<String> introEstadoLaboral;
@@ -1061,7 +1140,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField introNombre;
     private javax.swing.JComboBox<String> introSexo;
     private javax.swing.JTextField introTelefono;
+    private javax.swing.JTextField introUsuario;
     private javax.swing.JLabel introduceDatos;
+    private javax.swing.JCheckBox isPareja;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

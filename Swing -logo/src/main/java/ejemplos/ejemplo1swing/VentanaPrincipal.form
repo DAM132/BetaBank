@@ -552,7 +552,7 @@
                           <Component id="introduceDatos" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="177" max="32767" attributes="0"/>
+                  <EmptySpace pref="116" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -601,12 +601,35 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="introDNI" alignment="0" min="-2" pref="232" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="introNombre" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="introApellidos" alignment="0" pref="232" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="introNombre" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="introApellidos" alignment="0" pref="232" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="introContra" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="isPareja" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
-                                  <Component id="introTelefono" alignment="0" min="-2" pref="232" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="introDNI" min="-2" pref="232" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="introUsuario" min="-2" pref="232" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="introTelefono" min="-2" pref="232" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="introDNIpareja" min="-2" pref="232" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -640,7 +663,7 @@
                               <Component id="introEstadoLaboral" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="195" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -651,21 +674,25 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="DNI" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="introDNI" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="introUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="nombre" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="introNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="introContra" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="apellidos" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="introApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="isPareja" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="telefono" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="introTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="introDNIpareja" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -827,6 +854,23 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="introUsuario">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="introUsuarioActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="introContra">
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="isPareja">
+              <Properties>
+                <Property name="label" type="java.lang.String" value="&#xbf;Cliente es pareja?"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="introDNIpareja">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="introDNIparejaActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -136,7 +136,23 @@ public class UsuarioDAOImp implements Repositorio<Usuario> {
         }
     }
     
-    
+     public Usuario porDNI(String dni){
+        String sql = "SELECT * FROM usuario WHERE dni=?";
+        Usuario cliente = null;
+        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            stmt.setString(1, dni);
+            try ( ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    cliente = crearCliente(rs);
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("SQLexception: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return cliente;
+    }
 
     public static Usuario crearCliente(ResultSet rs) throws SQLException {
         PerfilDAOImp perfilDAOImp = new PerfilDAOImp();
