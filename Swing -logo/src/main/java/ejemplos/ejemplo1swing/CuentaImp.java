@@ -4,6 +4,7 @@
  */
 package ejemplos.ejemplo1swing;
 
+import static ejemplos.ejemplo1swing.UsuarioDAOImp.crearCliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -139,11 +140,33 @@ public class CuentaImp {
         }
     }
     
-
+public Cuenta porId(int id) {
+        String sql = "SELECT * FROM cuenta WHERE idUsuario=?";
+        Cuenta cuenta = null;
+        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            stmt.setInt(1, id);
+            try ( ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    cuenta = crearCuenta(rs);
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("SQLexception: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return cuenta;
+    }
+    
+    
+    
     public static Cuenta crearCuenta(ResultSet rs) throws SQLException {
         UsuarioDAOImp clienteAux = new UsuarioDAOImp();
         Usuario cliente = clienteAux.porId(rs.getInt("idUsuario"));
         Cuenta cuenta = new Cuenta(rs.getString("iban"), rs.getString("tipoCuenta"), rs.getDouble("saldo"), rs.getDouble("ingresos"), rs.getDouble("media"), cliente);
         return cuenta;
     }
+    
+    
+      
 }

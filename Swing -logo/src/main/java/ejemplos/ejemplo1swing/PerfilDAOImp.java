@@ -44,7 +44,7 @@ public class PerfilDAOImp implements Repositorio<Perfil> {
 
     @Override
     public Perfil porId(int id) {
-        String sql = "SELECT * FROM cliente WHERE idPerfil=?";
+        String sql = "SELECT * FROM perfil WHERE idPerfil=?";
         Perfil perfil = null;
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);

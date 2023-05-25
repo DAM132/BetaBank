@@ -46,12 +46,12 @@ public class UsuarioDAOImp implements Repositorio<Usuario> {
     @Override
     public Usuario porId(int id) {
         String sql = "SELECT * FROM usuario WHERE idUsuario=?";
-        Usuario cliente = null;
+        Usuario usuario = null;
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
             try ( ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    cliente = crearCliente(rs);
+                    usuario = crearCliente(rs);
                 }
             }
         } catch (SQLException ex) {
@@ -59,7 +59,7 @@ public class UsuarioDAOImp implements Repositorio<Usuario> {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        return cliente;
+        return usuario;
     }
 
     @Override
@@ -135,11 +135,15 @@ public class UsuarioDAOImp implements Repositorio<Usuario> {
             System.out.println(ex.getMessage());
         }
     }
+    
+    
 
     public static Usuario crearCliente(ResultSet rs) throws SQLException {
         PerfilDAOImp perfilDAOImp = new PerfilDAOImp();
         Perfil perfil = perfilDAOImp.porId(rs.getInt("idPerfil"));
         return new Usuario(rs.getInt("idUsuario"),perfil ,rs.getString("dni"), rs.getString("nombre"), rs.getString("apellidos"), rs.getString("telefono"), rs.getDate("fnac").toLocalDate(), rs.getString("domicilio"), rs.getString("localidad"), Sexo.valueOf(rs.getString("sexo")), rs.getBoolean("casado"), rs.getDouble("mediaIngreso"), rs.getBoolean("activo"),rs.getInt("idPareja"));
     }
+    
+     
 
 }
