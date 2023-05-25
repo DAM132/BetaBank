@@ -22,6 +22,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private int idUsuarioLogueado;
     private Perfil perfil;
     private List<Prestamo> prestamos = new ArrayList<>();
+    private int prueba=10;
     
     /**
      * Creates new form VentanaPrincipal
@@ -285,7 +286,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pantallaDatos.setBackground(new java.awt.Color(0, 153, 204));
 
         bienvenido.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        bienvenido.setText("BIENVENIDO JUANILLO");
+        bienvenido.setText("BIENVENIDO " + prueba);
 
         saldo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         saldo.setText("SALDO TOTAL: 1000000€");
@@ -788,22 +789,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         List<Perfil> aux = new ArrayList();
         aux = perfilDAO.listar();
         for (Perfil perfil1 : aux) {
-            if (perfil1.getUsuario().equalsIgnoreCase(cuadroTexto.getText())) {
-           
+            System.out.println(perfil1.toString());
+            if (perfil1.getUsuario().equalsIgnoreCase(cuadroTexto.getText())&&perfil1.getContrasena().equalsIgnoreCase(cuadroContraseña.getText())) {
+              
 
-                if (perfil1.getContrasena().equalsIgnoreCase(cuadroContraseña.getText())) {
+               
                     pantallaInicio.setVisible(false);
                     inicioSesion.setVisible(false);
                     registro.setVisible(false);
                     pantallaDatos.setVisible(true);
                     
-                    
+                   idUsuarioLogueado= 10;
+                   this.perfil=perfil1;
+                   //bienvenido.setText();
                    
-                }
+                
             }
             else{
                  JFrame jFrame = new JFrame();
-        JOptionPane.showMessageDialog(jFrame, "Hello there! How are you today?");
+        JOptionPane.showMessageDialog(jFrame, "Usuario incorrecto/ password incorrecto");
             }
         }
 

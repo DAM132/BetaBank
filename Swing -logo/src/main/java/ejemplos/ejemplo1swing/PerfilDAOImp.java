@@ -126,5 +126,7 @@ public class PerfilDAOImp implements Repositorio<Perfil> {
         Perfil perfil = new Perfil(rs.getInt("idPerfil"), rs.getString("usuario"), rs.getString("contraseña"), EstadoCivil.valueOf(rs.getString("estadoCivil").toUpperCase()), EstadoLaboral.valueOf(rs.getString("estadoLaboral").toUpperCase()), rs.getBoolean("moroso"),  TipoPerfilEnum.valueOf(rs.getString("tipoPerfil").toUpperCase()));
         return perfil;
     }
+    
+    
 
 }
