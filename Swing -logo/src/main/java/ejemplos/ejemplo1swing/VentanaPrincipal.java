@@ -12,8 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.StringTokenizer;
-
 
 /**
  *
@@ -25,7 +25,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private int idUsuarioLogueado;
     private Perfil perfil;
     private List<Prestamo> prestamos = new ArrayList<>();
-    private int prueba = 10;
+   
 
     /**
      * Creates new form VentanaPrincipal
@@ -73,10 +73,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonSolicitar = new javax.swing.JButton();
         botonConsultar = new javax.swing.JButton();
         botonLiquidar = new javax.swing.JButton();
-        botonModificar = new javax.swing.JButton();
+        botonConsultarMov = new javax.swing.JButton();
         botonNominas = new javax.swing.JButton();
         logoOpciones = new javax.swing.JLabel();
         cerrarSesion = new javax.swing.JButton();
+        botonPrestamo = new javax.swing.JButton();
         registro = new javax.swing.JPanel();
         panelDatos = new javax.swing.JPanel();
         DNI = new javax.swing.JLabel();
@@ -121,12 +122,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         volver4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        consultarMovimientosAdmin = new javax.swing.JPanel();
+        consultarMovimientosEnunciado = new javax.swing.JLabel();
+        logoConsultarMovimientos = new javax.swing.JLabel();
+        volver5 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableMov = new javax.swing.JTable();
+        botonEliminar = new javax.swing.JButton();
+        consultarMovimientosEnunciado1 = new javax.swing.JLabel();
+        introCantidadd1 = new javax.swing.JTextField();
+        entradaIdClienteMov = new javax.swing.JTextField();
+        botonBuscarMovFiltro = new javax.swing.JButton();
         barraMenu = new javax.swing.JMenuBar();
         opciones = new javax.swing.JMenu();
         salir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana principal");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.CardLayout());
 
         pantallaInicio.setBackground(new java.awt.Color(102, 204, 255));
@@ -175,7 +192,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(pantallaInicioLayout.createSequentialGroup()
                     .addGap(97, 97, 97)
                     .addComponent(lblIcono, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(97, Short.MAX_VALUE)))
+                    .addContainerGap(99, Short.MAX_VALUE)))
         );
         pantallaInicioLayout.setVerticalGroup(
             pantallaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,7 +307,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pantallaDatos.setBackground(new java.awt.Color(0, 153, 204));
 
         bienvenido.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        bienvenido.setText("BIENVENIDO " + prueba);
+        bienvenido.setText("BIENVENIDO ");
 
         saldo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         saldo.setText("SALDO TOTAL: 1000000€");
@@ -323,11 +340,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        botonModificar.setText("MODIFICAR PRESTAMO");
-        botonModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonConsultarMov.setText("Consultar Movimientos");
+        botonConsultarMov.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonConsultarMov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonConsultarMovActionPerformed(evt);
+            }
+        });
 
         botonNominas.setText("AGREGAR NOMINAS");
         botonNominas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonNominas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonNominasActionPerformed(evt);
+            }
+        });
 
         logoOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/logo2.jpg"))); // NOI18N
 
@@ -339,47 +366,61 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botonPrestamo.setText("MODIFICAR PRESTAMO");
+        botonPrestamo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPrestamoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout opcionesUsuarioLayout = new javax.swing.GroupLayout(opcionesUsuario);
         opcionesUsuario.setLayout(opcionesUsuarioLayout);
         opcionesUsuarioLayout.setHorizontalGroup(
             opcionesUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(opcionesUsuarioLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, opcionesUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(opcionesUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(opcionesUsuarioLayout.createSequentialGroup()
-                        .addComponent(botonSolicitar)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonLiquidar)
-                        .addContainerGap())
+                        .addGroup(opcionesUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, opcionesUsuarioLayout.createSequentialGroup()
+                                .addComponent(botonSolicitar)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonLiquidar))
+                            .addGroup(opcionesUsuarioLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(cerrarSesion))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, opcionesUsuarioLayout.createSequentialGroup()
+                                .addComponent(logoOpciones)
+                                .addGap(0, 538, Short.MAX_VALUE)))
+                        .addGap(31, 31, 31))
                     .addGroup(opcionesUsuarioLayout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(botonModificar)
+                        .addComponent(botonConsultarMov)
+                        .addGap(91, 91, 91)
+                        .addComponent(botonPrestamo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botonNominas)
-                        .addGap(87, 87, 87))
-                    .addGroup(opcionesUsuarioLayout.createSequentialGroup()
-                        .addComponent(logoOpciones)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, opcionesUsuarioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cerrarSesion)
-                .addGap(31, 31, 31))
+                        .addGap(21, 21, 21))))
         );
         opcionesUsuarioLayout.setVerticalGroup(
             opcionesUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(opcionesUsuarioLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(opcionesUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonSolicitar)
-                    .addComponent(botonConsultar)
-                    .addComponent(botonLiquidar))
-                .addGap(33, 33, 33)
-                .addGroup(opcionesUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonModificar)
-                    .addComponent(botonNominas))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addGroup(opcionesUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(opcionesUsuarioLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(opcionesUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonSolicitar)
+                            .addComponent(botonConsultar)
+                            .addComponent(botonLiquidar)))
+                    .addGroup(opcionesUsuarioLayout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addGroup(opcionesUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonConsultarMov)
+                            .addComponent(botonNominas)
+                            .addComponent(botonPrestamo))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addComponent(cerrarSesion)
                 .addGap(7, 7, 7)
                 .addComponent(logoOpciones)
@@ -688,6 +729,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        introCantidadd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                introCantidaddActionPerformed(evt);
+            }
+        });
+
+        introCuotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                introCuotasActionPerformed(evt);
+            }
+        });
+
         logoSolicitarPrestamo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/logo2.jpg"))); // NOI18N
 
         javax.swing.GroupLayout solicitarPrestamoLayout = new javax.swing.GroupLayout(solicitarPrestamo);
@@ -806,6 +859,129 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(consultarPrestamo, "card7");
 
+        consultarMovimientosAdmin.setBackground(new java.awt.Color(102, 204, 255));
+
+        consultarMovimientosEnunciado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        consultarMovimientosEnunciado.setText("Movimientos: ");
+
+        logoConsultarMovimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/logo2.jpg"))); // NOI18N
+
+        volver5.setText("Volver");
+        volver5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        volver5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volver5ActionPerformed(evt);
+            }
+        });
+
+        jTableMov.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableMov);
+
+        botonEliminar.setText("Eliminar");
+        botonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
+
+        consultarMovimientosEnunciado1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        consultarMovimientosEnunciado1.setText("Id Cliente");
+
+        entradaIdClienteMov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entradaIdClienteMovActionPerformed(evt);
+            }
+        });
+
+        botonBuscarMovFiltro.setText("Buscar Por ID");
+        botonBuscarMovFiltro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonBuscarMovFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarMovFiltroActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout consultarMovimientosAdminLayout = new javax.swing.GroupLayout(consultarMovimientosAdmin);
+        consultarMovimientosAdmin.setLayout(consultarMovimientosAdminLayout);
+        consultarMovimientosAdminLayout.setHorizontalGroup(
+            consultarMovimientosAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
+                .addGroup(consultarMovimientosAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(consultarMovimientosAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
+                                .addComponent(consultarMovimientosEnunciado)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
+                                .addComponent(logoConsultarMovimientos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(volver5))))
+                    .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
+                        .addGroup(consultarMovimientosAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
+                                .addGap(179, 179, 179)
+                                .addComponent(consultarMovimientosEnunciado1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(entradaIdClienteMov, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(48, 48, 48)
+                                .addComponent(botonBuscarMovFiltro)
+                                .addGap(221, 221, 221))
+                            .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
+                                .addGap(155, 155, 155)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(botonEliminar)))
+                .addContainerGap())
+            .addGroup(consultarMovimientosAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(introCantidadd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        consultarMovimientosAdminLayout.setVerticalGroup(
+            consultarMovimientosAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, consultarMovimientosAdminLayout.createSequentialGroup()
+                .addGroup(consultarMovimientosAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonEliminar)
+                        .addGap(66, 66, 66)
+                        .addComponent(volver5))
+                    .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(consultarMovimientosEnunciado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(consultarMovimientosAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(consultarMovimientosAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(entradaIdClienteMov)
+                                .addComponent(botonBuscarMovFiltro))
+                            .addComponent(consultarMovimientosEnunciado1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(logoConsultarMovimientos)))
+                .addContainerGap())
+            .addGroup(consultarMovimientosAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(introCantidadd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        getContentPane().add(consultarMovimientosAdmin, "card7");
+
         barraMenu.setBackground(new java.awt.Color(51, 204, 255));
 
         opciones.setText("Opciones");
@@ -855,7 +1031,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 pantallaDatos.setVisible(true);
 
                 this.perfil = perfil1;
-
+                
                 Usuario usuario = usuarioDAO.porId(perfil.getIdPerfil());
                 bienvenido.setText("Bienvenido " + usuario.getNombre());
                 System.out.println("usuario " + usuario.getNombre());
@@ -865,13 +1041,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 iban.setText(cuenta.getIban());
 
                 encontrado = true;
+                Funciones.asignarID(usuario.getIdUsuario());
 
             }
 
         }
         if (!encontrado) {
             JOptionPane.showMessageDialog(errorlogin, "Usuario o contraseña Incorrecto");
-            
+
         }
 
     }//GEN-LAST:event_entrarActionPerformed
@@ -924,7 +1101,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         EstadoLaboral estLaboral = EstadoLaboral.valueOf(introEstadoLaboral.getSelectedItem().toString().toUpperCase());
         System.out.println(estCivil.toString());
         cas = estCivil.equals(EstadoCivil.CASADO);
-        Perfil p1 = new Perfil(1,introUsuario.getText(),introContra.getText(),estCivil,estLaboral,false,TipoPerfilEnum.CLIENTE);
+        Perfil p1 = new Perfil(1, introUsuario.getText(), introContra.getText(), estCivil, estLaboral, false, TipoPerfilEnum.CLIENTE);
         perf.insertar(p1);
         p1.setIdPerfil(perf.porUsuario(p1.getUsuario()));
         int idP = 0;
@@ -1034,6 +1211,159 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_introDNIparejaActionPerformed
 
+    private void botonConsultarMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarMovActionPerformed
+        // TODO add your handling code here:
+        pantallaInicio.setVisible(false);
+        inicioSesion.setVisible(false);
+        registro.setVisible(false);
+        consultarPrestamo.setVisible(false);
+        pantallaDatos.setVisible(false);
+        consultarMovimientosAdmin.setVisible(true);
+        
+         llenarTablaMovimientos(Funciones.IdusuarioLogieado());
+         System.out.println("IdUsuario " + Funciones.IdusuarioLogieado());
+        
+    }//GEN-LAST:event_botonConsultarMovActionPerformed
+
+    private void botonNominasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNominasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonNominasActionPerformed
+
+    private void botonPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPrestamoActionPerformed
+        // TODO add your handling code here:
+        
+
+    }//GEN-LAST:event_botonPrestamoActionPerformed
+
+    private void volver5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volver5ActionPerformed
+      pantallaInicio.setVisible(false);
+        inicioSesion.setVisible(false);
+        registro.setVisible(false);
+        consultarPrestamo.setVisible(false);
+        pantallaDatos.setVisible(true);
+        consultarMovimientosAdmin.setVisible(false);  // TODO add your handling code here:
+    }//GEN-LAST:event_volver5ActionPerformed
+
+    
+      private void llenarTablaMovimientos(int idusuario) { 
+         
+          ArrayList<Movimiento> datos= new ArrayList<>();  
+        DefaultTableModel tabla =  new DefaultTableModel();
+        UsuarioDAOImp usuarioDAOImp= new UsuarioDAOImp();
+          System.out.println("La id de usuario es " + idusuario);
+        
+        Usuario aux=usuarioDAOImp.porId(idusuario);
+        CuentaImp cuentaimp= new CuentaImp();
+        Cuenta auxc= cuentaimp.porId(aux.getIdUsuario());
+        System.out.println("numero de cuenta " + auxc.getIban() );
+        MovCuentaImp movCuentaImp= new MovCuentaImp();
+        ArrayList <MovCuenta> movimientos=movCuentaImp.listarPorCliente(auxc.getIban());
+         
+          for (MovCuenta movimiento : movimientos) {
+              System.out.println("Movimiento " + movimiento.toString());
+               MovimientoDAOImp mov = new  MovimientoDAOImp();
+               datos.add(mov.porId(movimiento.getIdMovCuenta()));
+               
+          }
+          
+          
+       
+      
+         
+       String[] fila = new String[5];
+        tabla.addColumn("IDMOV");
+        tabla.addColumn("Cantidad");
+        tabla.addColumn("Concepto");
+        tabla.addColumn("Emisor");
+        tabla.addColumn("Destinatario");
+       
+         
+        
+        
+            
+           
+        for(int f=0; f<datos.size();f++){
+            fila[0] = String.valueOf(datos.get(f).getIdMovimiento());
+            fila[1] = String.valueOf(datos.get(f).getCantidad());
+            fila[2] = datos.get(f).getConcepto();
+            fila[3] = datos.get(f).getEmisor();
+             fila[4] = datos.get(f).getDestinatario();
+            tabla.addRow(fila);
+        
+         
+  
+        jTableMov.setModel(tabla);
+    }
+      }
+      
+          private int seleccionFila;
+
+          //obtenemos el número de fila seleccionada al dar click en la tabla
+    private int tuTablaMouseClicked(java.awt.event.MouseEvent evt) {                                     
+        seleccionFila= jTableMov.rowAtPoint(evt.getPoint());
+         MovimientoDAOImp mov = new  MovimientoDAOImp();
+         mov.eliminar(seleccionFila);
+        System.out.println("se ha eliminado"+seleccionFila);
+        return seleccionFila;
+    } 
+
+    // evento al dar click en el boton agregar usuario
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        //creamos variable locales para obtener los valores de cada columna de la fila seleccionada       
+        int id=Integer.parseInt(String.valueOf(jTableMov.getValueAt(seleccionFila, 0)));
+        String nombre=String.valueOf(jTableMov.getValueAt(seleccionFila, 1));
+        String apellido1=String.valueOf(jTableMov.getValueAt(seleccionFila, 2));
+        String apellido2=String.valueOf(jTableMov.getValueAt(seleccionFila, 3));
+        String tipoPrestamo=String.valueOf(jTableMov.getValueAt(seleccionFila, 4));
+        
+        /*
+         Agregas el código para guardar en el archivo, según la descripción de tu problema 
+         sabes como realizarlo
+        */
+        System.out.println(id+nombre+apellido1);
+    }
+    
+    
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_formWindowActivated
+
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        // TODO add your handling code here:
+      MovimientoDAOImp mov = new  MovimientoDAOImp();
+      mov.eliminar(seleccionFila+1);
+      llenarTablaMovimientos(0);
+      
+       
+    }//GEN-LAST:event_botonEliminarActionPerformed
+
+    private void introCuotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_introCuotasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_introCuotasActionPerformed
+
+    private void introCantidaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_introCantidaddActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_introCantidaddActionPerformed
+
+    private void entradaIdClienteMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradaIdClienteMovActionPerformed
+        // TODO add your handling code here:
+        entradaIdClienteMov.setText("Todos");
+        
+        
+    }//GEN-LAST:event_entradaIdClienteMovActionPerformed
+
+    private void botonBuscarMovFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarMovFiltroActionPerformed
+        // TODO add your handling code here:
+        entradaIdClienteMov.getText();
+        if(entradaIdClienteMov.getText().equalsIgnoreCase("TODOS")){
+            llenarTablaMovimientos(0);
+        }
+        else{
+            llenarTablaMovimientos(Integer.parseInt(entradaIdClienteMov.getText()));
+        }
+    }//GEN-LAST:event_botonBuscarMovFiltroActionPerformed
+
     private void rellenarTablaPrestamos(int idUsuarioPrestamos) {
         try {
             // llamada a bd para traer los prestamos del usuaro idUsuario
@@ -1106,18 +1436,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel apellidos;
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JLabel bienvenido;
+    private javax.swing.JButton botonBuscarMovFiltro;
     private javax.swing.JButton botonConsultar;
+    private javax.swing.JButton botonConsultarMov;
+    private javax.swing.JButton botonEliminar;
     private javax.swing.JButton botonLiquidar;
-    private javax.swing.JButton botonModificar;
     private javax.swing.JButton botonNominas;
+    private javax.swing.JButton botonPrestamo;
     private javax.swing.JButton botonSolicitar;
     private javax.swing.JLabel cantidad;
     private javax.swing.JButton cerrarSesion;
+    private javax.swing.JPanel consultarMovimientosAdmin;
+    private javax.swing.JLabel consultarMovimientosEnunciado;
+    private javax.swing.JLabel consultarMovimientosEnunciado1;
     private javax.swing.JPanel consultarPrestamo;
     private javax.swing.JPasswordField cuadroContraseña;
     private javax.swing.JTextField cuadroTexto;
     private javax.swing.JLabel cuotas;
     private javax.swing.JLabel domicilio;
+    private javax.swing.JTextField entradaIdClienteMov;
     private javax.swing.JButton entrar;
     private javax.swing.JButton enviar;
     private javax.swing.JLabel estadoCivil;
@@ -1128,6 +1465,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel inicioSesion;
     private javax.swing.JTextField introApellidos;
     private javax.swing.JTextField introCantidadd;
+    private javax.swing.JTextField introCantidadd1;
     private javax.swing.JTextField introContra;
     private javax.swing.JTextField introCuotas;
     private javax.swing.JTextField introDNI;
@@ -1145,9 +1483,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JCheckBox isPareja;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableMov;
     private javax.swing.JLabel lblIcono;
     private javax.swing.JLabel localidad;
+    private javax.swing.JLabel logoConsultarMovimientos;
     private javax.swing.JLabel logoConsultarPrestamo;
     private javax.swing.JLabel logoInicio;
     private javax.swing.JLabel logoOpciones;
@@ -1176,5 +1517,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton volver2;
     private javax.swing.JButton volver3;
     private javax.swing.JButton volver4;
+    private javax.swing.JButton volver5;
     // End of variables declaration//GEN-END:variables
 }
