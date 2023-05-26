@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.time.LocalDate;
 import java.util.LinkedList;
+import java.util.Iterator;
 import java.util.StringTokenizer;
 
 /**
@@ -24,8 +25,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private DefaultTableModel modeloTabla;
     private int idUsuarioLogueado;
     private Perfil perfil;
-    private List<Prestamo> prestamos = new ArrayList<>();
-   
+    private List<Prestamo> prestamos;
+    private int prueba = 10;
+    private PerfilDAOImp perfilDAO;
+    private UsuarioDAOImp usuarioDAO;
 
     /**
      * Creates new form VentanaPrincipal
@@ -36,7 +39,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         inicioSesion.setVisible(false);
         registro.setVisible(false);
         modeloTabla = (DefaultTableModel) jTable1.getModel();
-
+        perfilDAO = new PerfilDAOImp();
+        usuarioDAO = new UsuarioDAOImp();
+        prestamos = new ArrayList<>();
     }
 
     /**
@@ -829,16 +834,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(consultarPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(consultarPrestamoLayout.createSequentialGroup()
                         .addComponent(prestamoActual)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 439, Short.MAX_VALUE))
                     .addGroup(consultarPrestamoLayout.createSequentialGroup()
                         .addComponent(logoConsultarPrestamo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(volver4)))
                 .addContainerGap())
             .addGroup(consultarPrestamoLayout.createSequentialGroup()
-                .addGap(119, 119, 119)
+                .addGap(120, 120, 120)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         consultarPrestamoLayout.setVerticalGroup(
             consultarPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -850,9 +855,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(consultarPrestamoLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(prestamoActual)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                         .addComponent(logoConsultarPrestamo)))
                 .addContainerGap())
         );
@@ -1014,8 +1019,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
         // TODO add your handling code here:
-        PerfilDAOImp perfilDAO = new PerfilDAOImp();
-        UsuarioDAOImp usuarioDAO = new UsuarioDAOImp();
+        
         CuentaImp cuentaImp = new CuentaImp();
         List<Perfil> aux = new ArrayList();
         aux = perfilDAO.listar();
@@ -1081,8 +1085,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_introLocalidadActionPerformed
 
     private void enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarActionPerformed
-        UsuarioDAOImp usua = new UsuarioDAOImp();
-        PerfilDAOImp perf = new PerfilDAOImp();
         boolean cas;
         StringTokenizer st = new StringTokenizer(introFecha.getText(), "/");
         int dia = Integer.valueOf(st.nextToken());
@@ -1102,14 +1104,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         System.out.println(estCivil.toString());
         cas = estCivil.equals(EstadoCivil.CASADO);
         Perfil p1 = new Perfil(1, introUsuario.getText(), introContra.getText(), estCivil, estLaboral, false, TipoPerfilEnum.CLIENTE);
-        perf.insertar(p1);
-        p1.setIdPerfil(perf.porUsuario(p1.getUsuario()));
+        perfilDAO.insertar(p1);
+        p1.setIdPerfil(perfilDAO.porUsuario(p1.getUsuario()));
         int idP = 0;
         if (isPareja.isSelected()) {
-            idP = usua.porDNI(introDNIpareja.getText()).getIdUsuario();
+            idP = usuarioDAO.porDNI(introDNIpareja.getText()).getIdUsuario();
         }
         Usuario c1 = new Usuario(1, p1, introDNI.getText(), introNombre.getText(), introApellidos.getText(), introTelefono.getText(), fechaNac, introDomicilio.getText(), introLocalidad.getText(), se, cas, 0.0, true, idP);
-        usua.insertar(c1);
+        usuarioDAO.insertar(c1);
         pantallaInicio.setVisible(false);
         inicioSesion.setVisible(false);
         registro.setVisible(false);
@@ -1172,6 +1174,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         registro.setVisible(false);
         pantallaDatos.setVisible(false);
         solicitarPrestamo.setVisible(true);
+        // introCantidadd
+        // introCuotas
+
+        Usuario usuario = usuarioDAO.porId(idUsuarioLogueado);
+        if (!perfil.isMoroso()) {
+            if (EstadoLaboral.DESEMPLEADO.equals(this.perfil.getEstadolab()) || EstadoLaboral.ESTUDIANTE.equals(this.perfil.getEstadolab())) {
+                if (usuario.isCasado() == true) {
+                    if (usuario.getIdPareja()!=0) {
+                        
+                    }
+                }
+            }
+        }
+
+
     }//GEN-LAST:event_botonSolicitarActionPerformed
 
     private void volver3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volver3ActionPerformed
@@ -1371,29 +1388,61 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             List<Prestamo> list = prestamoDAO.listarPorIdUsuario(idUsuarioPrestamos);
 
             String[] tituloColumnas = {"Prestamo", "Cliente", "Fecha Firma", "Cantidad", "Periodo en Meses", "Tipo de Interes", "Plazo en Dias", "Estado Prestamo", "Movimiento"};
-            Object[][] obj = null;
-
-            for (int i = 0; i < list.size(); i++) {
-                obj[i][0] = list.get(i).getIdPrestamo();
-                obj[i][1] = list.get(i).getIdUsuario();
-                obj[i][2] = list.get(i).getFechaFirma();
-                obj[i][3] = list.get(i).getCantidad();
-                obj[i][4] = list.get(i).getPeriodoMes();
-                obj[i][5] = list.get(i).getTipoInteres();
-                obj[i][6] = list.get(i).getPlazoDias();
-                obj[i][7] = list.get(i).getEstadoPrest();
-                obj[i][8] = list.get(i).getIdMovimiento();
-            }
 
             modeloTabla = new DefaultTableModel(null, tituloColumnas);
             jTable1.setModel(modeloTabla);
-            for (int i = 0; i < obj.length; i++) {
-                modeloTabla.addRow(obj[i]);
+
+            for (Prestamo prestam : list) {
+                String[] datosPrestamo = new String[tituloColumnas.length];
+                int colum = 0;
+                datosPrestamo[colum++] = String.valueOf(prestam.getIdPrestamo());
+                datosPrestamo[colum++] = String.valueOf(prestam.getIdUsuario());
+                datosPrestamo[colum++] = String.valueOf(prestam.getFechaFirma());
+                datosPrestamo[colum++] = String.valueOf(prestam.getCantidad());
+                datosPrestamo[colum++] = String.valueOf(prestam.getPeriodoMes());
+                datosPrestamo[colum++] = String.valueOf(prestam.getTipoInteres());
+                datosPrestamo[colum++] = String.valueOf(prestam.getPlazoDias());
+                datosPrestamo[colum++] = String.valueOf(prestam.getEstadoPrest());
+                datosPrestamo[colum++] = String.valueOf(prestam.getIdMovimiento());
+                modeloTabla.addRow(datosPrestamo);
             }
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+    }
+    
+    
+//    if (!perfil.isMoroso()) {
+//            if (EstadoLaboral.DESEMPLEADO.equals(this.perfil.getEstadolab()) || EstadoLaboral.ESTUDIANTE.equals(this.perfil.getEstadolab())) {
+//                if (usuario.isCasado() == true) {
+//                    if (usuario.getIdPareja()!=0) {
+//                        
+//                    }
+//                }
+//            }
+//        }
+    
+    private boolean isValidoParaPrestamo(Usuario usuario){
+        Perfil perfil = usuario.getPerfil();
+        if(!perfil.isMoroso()){
+            if(EstadoLaboral.ESTADOS_DEPNEDIENTE.contains(perfil.getEstadolab())){
+                
+            } else if(EstadoLaboral.ESTADOS_PRE_APROBADOS.contains(perfil.getEstadolab())){
+                
+            } else{
+                // ES AUTONOMO ¿? ¿? ¿?
+            }
+        }
+        return false;
+    }
+    
+    private boolean comprobarCasados(Usuario usuario){
+        if(usuario.isCasado() && usuario.getIdPareja() != 0){
+            
+        }
+        
+        return false;
     }
 
     /**

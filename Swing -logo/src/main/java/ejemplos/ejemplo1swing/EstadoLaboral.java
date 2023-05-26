@@ -4,12 +4,16 @@
  */
 package ejemplos.ejemplo1swing;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author DAM118
  */
 public  enum EstadoLaboral {
-    EMPLEADO,DESEMPLEADO, AUTÓNOMO, PENSIONISTA, RENTISTA, ESTUDIANTE, RESPONSABLE_DEL_HOGAR
+    EMPLEADO,DESEMPLEADO, AUTÓNOMO, PENSIONISTA, RENTISTA, ESTUDIANTE, RESPONSABLE_DEL_HOGAR;
     
-    
+    public static final List<EstadoLaboral> ESTADOS_DEPNEDIENTE = Arrays.asList(DESEMPLEADO, ESTUDIANTE, RESPONSABLE_DEL_HOGAR);
+    public static final List<EstadoLaboral> ESTADOS_PRE_APROBADOS = Arrays.asList(EMPLEADO, RENTISTA, PENSIONISTA);
 }
