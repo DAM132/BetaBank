@@ -388,18 +388,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(opcionesUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(opcionesUsuarioLayout.createSequentialGroup()
                         .addGroup(opcionesUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, opcionesUsuarioLayout.createSequentialGroup()
+                            .addGroup(opcionesUsuarioLayout.createSequentialGroup()
                                 .addComponent(botonSolicitar)
                                 .addGap(18, 18, 18)
-                                .addComponent(botonConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(botonLiquidar))
+                                .addComponent(botonConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
                             .addGroup(opcionesUsuarioLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(cerrarSesion))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, opcionesUsuarioLayout.createSequentialGroup()
                                 .addComponent(logoOpciones)
-                                .addGap(0, 538, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(opcionesUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonLiquidar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cerrarSesion, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(31, 31, 31))
                     .addGroup(opcionesUsuarioLayout.createSequentialGroup()
                         .addComponent(botonConsultarMov)
@@ -425,7 +424,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(botonConsultarMov)
                             .addComponent(botonNominas)
                             .addComponent(botonPrestamo))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                .addGap(18, 116, Short.MAX_VALUE)
                 .addComponent(cerrarSesion)
                 .addGap(7, 7, 7)
                 .addComponent(logoOpciones)
@@ -832,33 +831,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(consultarPrestamoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(consultarPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(consultarPrestamoLayout.createSequentialGroup()
-                        .addComponent(prestamoActual)
-                        .addGap(0, 439, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
                     .addGroup(consultarPrestamoLayout.createSequentialGroup()
                         .addComponent(logoConsultarPrestamo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(volver4)))
+                        .addComponent(volver4))
+                    .addGroup(consultarPrestamoLayout.createSequentialGroup()
+                        .addComponent(prestamoActual)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(consultarPrestamoLayout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         consultarPrestamoLayout.setVerticalGroup(
             consultarPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, consultarPrestamoLayout.createSequentialGroup()
-                .addGroup(consultarPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(consultarPrestamoLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(volver4))
-                    .addGroup(consultarPrestamoLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(prestamoActual)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                        .addComponent(logoConsultarPrestamo)))
+                .addGap(17, 17, 17)
+                .addComponent(prestamoActual)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(consultarPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(volver4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(logoConsultarPrestamo, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
@@ -973,7 +966,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addComponent(entradaIdClienteMov)
                                 .addComponent(botonBuscarMovFiltro))
                             .addComponent(consultarMovimientosEnunciado1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17)
                         .addComponent(logoConsultarMovimientos)))
@@ -1153,7 +1146,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
 //        if(TipoPerfilEnum.CLIENTE.equals(this.perfil.getTipoPerfil())){
         consultarPrestamo.setVisible(true);
-        rellenarTablaPrestamos(this.idUsuarioLogueado);
+        rellenarTablaPrestamos(1);
 //        }
         // TODO 
 //        else if (TipoPerfilEnum.BANQUERO.equals(this.perfil.getTipoPerfil())){
@@ -1260,8 +1253,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     
       private void llenarTablaMovimientos(int idusuario) { 
-         
-          ArrayList<Movimiento> datos= new ArrayList<>();  
+        
+        ArrayList<Movimiento> datos= new ArrayList<>();  
         DefaultTableModel tabla =  new DefaultTableModel();
         UsuarioDAOImp usuarioDAOImp= new UsuarioDAOImp();
           System.out.println("La id de usuario es " + idusuario);
@@ -1383,7 +1376,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             PrestamoDAOImp prestamoDAO = new PrestamoDAOImp();
             List<Prestamo> list = prestamoDAO.listarPorIdUsuario(idUsuarioPrestamos);
 
-            String[] tituloColumnas = {"Prestamo", "Cliente", "Fecha Firma", "Cantidad", "Periodo en Meses", "Tipo de Interes", "Plazo en Dias", "Estado Prestamo", "Movimiento"};
+            String[] tituloColumnas = {"Prestamo", "Cliente", "Fecha", "Cantidad", "Meses", "Interes", "Dias", "Estado"};
 
             modeloTabla = new DefaultTableModel(null, tituloColumnas);
             jTable1.setModel(modeloTabla);
@@ -1399,7 +1392,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 datosPrestamo[colum++] = String.valueOf(prestam.getTipoInteres());
                 datosPrestamo[colum++] = String.valueOf(prestam.getPlazoDias());
                 datosPrestamo[colum++] = String.valueOf(prestam.getEstadoPrest());
-                datosPrestamo[colum++] = String.valueOf(prestam.getIdMovimiento());
                 modeloTabla.addRow(datosPrestamo);
             }
 
