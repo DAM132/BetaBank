@@ -1271,6 +1271,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Cuenta auxc= cuentaimp.porId(aux.getIdUsuario());
         System.out.println("numero de cuenta " + auxc.getIban() );
         MovCuentaImp movCuentaImp= new MovCuentaImp();
+          System.out.println("El iba es " + auxc.getIban());
         ArrayList <MovCuenta> movimientos=movCuentaImp.listarPorCliente(auxc.getIban());
          
           for (MovCuenta movimiento : movimientos) {
@@ -1280,9 +1281,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                
           }
           
-          
-       
-      
+    
          
        String[] fila = new String[5];
         tabla.addColumn("IDMOV");
