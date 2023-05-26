@@ -138,6 +138,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         introCantidadd1 = new javax.swing.JTextField();
         entradaIdClienteMov = new javax.swing.JTextField();
         botonBuscarMovFiltro = new javax.swing.JButton();
+        ConsultarClientesAdmin = new javax.swing.JPanel();
+        consultarMovimientosEnunciado2 = new javax.swing.JLabel();
+        logoConsultarMovimientos1 = new javax.swing.JLabel();
+        volver6 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableListarClientesAdmin = new javax.swing.JTable();
+        introCantidadd2 = new javax.swing.JTextField();
         barraMenu = new javax.swing.JMenuBar();
         opciones = new javax.swing.JMenu();
         salir = new javax.swing.JMenuItem();
@@ -192,12 +199,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(titulo)))
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addContainerGap(305, Short.MAX_VALUE))
             .addGroup(pantallaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pantallaInicioLayout.createSequentialGroup()
                     .addGap(97, 97, 97)
                     .addComponent(lblIcono, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(99, Short.MAX_VALUE)))
+                    .addContainerGap(194, Short.MAX_VALUE)))
         );
         pantallaInicioLayout.setVerticalGroup(
             pantallaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,7 +282,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(entrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(volver)))
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(344, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inicioSesionLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(textoInicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -391,7 +398,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, opcionesUsuarioLayout.createSequentialGroup()
                                 .addComponent(botonSolicitar)
                                 .addGap(18, 18, 18)
-                                .addComponent(botonConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                                .addComponent(botonConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addComponent(botonLiquidar))
                             .addGroup(opcionesUsuarioLayout.createSequentialGroup()
@@ -399,7 +406,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addComponent(cerrarSesion))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, opcionesUsuarioLayout.createSequentialGroup()
                                 .addComponent(logoOpciones)
-                                .addGap(0, 538, Short.MAX_VALUE)))
+                                .addGap(0, 635, Short.MAX_VALUE)))
                         .addGap(31, 31, 31))
                     .addGroup(opcionesUsuarioLayout.createSequentialGroup()
                         .addComponent(botonConsultarMov)
@@ -693,7 +700,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(registroLayout.createSequentialGroup()
                         .addGap(202, 202, 202)
                         .addComponent(introduceDatos)))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
         registroLayout.setVerticalGroup(
             registroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -765,7 +772,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addComponent(cuotas)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(introCuotas, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(102, Short.MAX_VALUE))
+                        .addContainerGap(199, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solicitarPrestamoLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(prestamo)
@@ -834,7 +841,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(consultarPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(consultarPrestamoLayout.createSequentialGroup()
                         .addComponent(prestamoActual)
-                        .addGap(0, 439, Short.MAX_VALUE))
+                        .addGap(0, 536, Short.MAX_VALUE))
                     .addGroup(consultarPrestamoLayout.createSequentialGroup()
                         .addComponent(logoConsultarPrestamo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -917,6 +924,81 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        ConsultarClientesAdmin.setBackground(new java.awt.Color(102, 204, 255));
+
+        consultarMovimientosEnunciado2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        consultarMovimientosEnunciado2.setText("Clientes");
+
+        logoConsultarMovimientos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/logo2.jpg"))); // NOI18N
+
+        volver6.setText("Volver");
+        volver6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        volver6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volver6ActionPerformed(evt);
+            }
+        });
+
+        jTableListarClientesAdmin.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTableListarClientesAdmin);
+
+        javax.swing.GroupLayout ConsultarClientesAdminLayout = new javax.swing.GroupLayout(ConsultarClientesAdmin);
+        ConsultarClientesAdmin.setLayout(ConsultarClientesAdminLayout);
+        ConsultarClientesAdminLayout.setHorizontalGroup(
+            ConsultarClientesAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ConsultarClientesAdminLayout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
+            .addGroup(ConsultarClientesAdminLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ConsultarClientesAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ConsultarClientesAdminLayout.createSequentialGroup()
+                        .addComponent(consultarMovimientosEnunciado2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(ConsultarClientesAdminLayout.createSequentialGroup()
+                        .addComponent(logoConsultarMovimientos1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(volver6)))
+                .addContainerGap())
+            .addGroup(ConsultarClientesAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ConsultarClientesAdminLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(introCantidadd2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        ConsultarClientesAdminLayout.setVerticalGroup(
+            ConsultarClientesAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ConsultarClientesAdminLayout.createSequentialGroup()
+                .addGroup(ConsultarClientesAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(ConsultarClientesAdminLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(volver6))
+                    .addGroup(ConsultarClientesAdminLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(consultarMovimientosEnunciado2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(logoConsultarMovimientos1)))
+                .addContainerGap())
+            .addGroup(ConsultarClientesAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ConsultarClientesAdminLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(introCantidadd2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout consultarMovimientosAdminLayout = new javax.swing.GroupLayout(consultarMovimientosAdmin);
         consultarMovimientosAdmin.setLayout(consultarMovimientosAdminLayout);
         consultarMovimientosAdminLayout.setHorizontalGroup(
@@ -954,6 +1036,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(introCantidadd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(consultarMovimientosAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(ConsultarClientesAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         consultarMovimientosAdminLayout.setVerticalGroup(
             consultarMovimientosAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -982,6 +1069,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(introCantidadd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(consultarMovimientosAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(ConsultarClientesAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -1033,6 +1125,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 inicioSesion.setVisible(false);
                 registro.setVisible(false);
                 pantallaDatos.setVisible(true);
+                ConsultarClientesAdmin.setVisible(false);
 
                 this.perfil = perfil1;
                 
@@ -1047,6 +1140,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 encontrado = true;
                 Funciones.asignarID(usuario.getIdUsuario());
 
+            }
+            else if(perfil1.getUsuario().equalsIgnoreCase(cuadroTexto.getText()) && perfil1.getContrasena().equalsIgnoreCase(cuadroContraseña.getText())&&TipoPerfilEnum.BANQUERO.equals(perfil.getTipoPerfil())){
+                  pantallaInicio.setVisible(false);
+                inicioSesion.setVisible(false);
+                registro.setVisible(false);
+                pantallaDatos.setVisible(false);
+                ConsultarClientesAdmin.setVisible(true);
             }
 
         }
@@ -1377,6 +1477,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonBuscarMovFiltroActionPerformed
 
+    private void volver6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volver6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_volver6ActionPerformed
+
     private void rellenarTablaPrestamos(int idUsuarioPrestamos) {
         try {
             // llamada a bd para traer los prestamos del usuaro idUsuario
@@ -1475,6 +1579,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel ConsultarClientesAdmin;
     private javax.swing.JLabel DNI;
     private javax.swing.JLabel apellidos;
     private javax.swing.JMenuBar barraMenu;
@@ -1492,6 +1597,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel consultarMovimientosAdmin;
     private javax.swing.JLabel consultarMovimientosEnunciado;
     private javax.swing.JLabel consultarMovimientosEnunciado1;
+    private javax.swing.JLabel consultarMovimientosEnunciado2;
     private javax.swing.JPanel consultarPrestamo;
     private javax.swing.JPasswordField cuadroContraseña;
     private javax.swing.JTextField cuadroTexto;
@@ -1509,6 +1615,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField introApellidos;
     private javax.swing.JTextField introCantidadd;
     private javax.swing.JTextField introCantidadd1;
+    private javax.swing.JTextField introCantidadd2;
     private javax.swing.JTextField introContra;
     private javax.swing.JTextField introCuotas;
     private javax.swing.JTextField introDNI;
@@ -1527,11 +1634,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableListarClientesAdmin;
     private javax.swing.JTable jTableMov;
     private javax.swing.JLabel lblIcono;
     private javax.swing.JLabel localidad;
     private javax.swing.JLabel logoConsultarMovimientos;
+    private javax.swing.JLabel logoConsultarMovimientos1;
     private javax.swing.JLabel logoConsultarPrestamo;
     private javax.swing.JLabel logoInicio;
     private javax.swing.JLabel logoOpciones;
@@ -1561,5 +1671,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton volver3;
     private javax.swing.JButton volver4;
     private javax.swing.JButton volver5;
+    private javax.swing.JButton volver6;
     // End of variables declaration//GEN-END:variables
 }
