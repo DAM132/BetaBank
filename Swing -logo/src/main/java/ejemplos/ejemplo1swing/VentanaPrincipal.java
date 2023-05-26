@@ -1177,15 +1177,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // introCantidadd
         // introCuotas
 
-        Usuario usuario = usuarioDAO.porId(idUsuarioLogueado);
-        if (!perfil.isMoroso()) {
-            if (EstadoLaboral.DESEMPLEADO.equals(this.perfil.getEstadolab()) || EstadoLaboral.ESTUDIANTE.equals(this.perfil.getEstadolab())) {
-                if (usuario.isCasado() == true) {
-                    if (usuario.getIdPareja()!=0) {
-                        
-                    }
-                }
-            }
+        int idUsuarioAComprobar = 0;
+        Usuario usuario = usuarioDAO.porId(idUsuarioAComprobar);
+        if(this.isValidoParaPrestamo(usuario)){
+            double importe = this.calcularPrestamos(usuario.getMediaIngreso());
+        }else{
+            // TODO NO SE LE CONCEDE PRESTAMO
         }
 
 
@@ -1412,37 +1409,35 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }
     
-    
-//    if (!perfil.isMoroso()) {
-//            if (EstadoLaboral.DESEMPLEADO.equals(this.perfil.getEstadolab()) || EstadoLaboral.ESTUDIANTE.equals(this.perfil.getEstadolab())) {
-//                if (usuario.isCasado() == true) {
-//                    if (usuario.getIdPareja()!=0) {
-//                        
-//                    }
-//                }
-//            }
-//        }
-    
     private boolean isValidoParaPrestamo(Usuario usuario){
+        boolean valido = false;
         Perfil perfil = usuario.getPerfil();
+        
         if(!perfil.isMoroso()){
-            if(EstadoLaboral.ESTADOS_DEPNEDIENTE.contains(perfil.getEstadolab())){
-                
-            } else if(EstadoLaboral.ESTADOS_PRE_APROBADOS.contains(perfil.getEstadolab())){
-                
+            if(EstadoLaboral.ESTADOS_PAREJA.contains(perfil.getEstadolab())){
+                valido = comprobarCasados(usuario);
+            } else if(EstadoLaboral.ESTADOS_ECONOMICOS.contains(perfil.getEstadolab()) && usuario.getMediaIngreso() > 1000){
+                 valido = true;
             } else{
                 // ES AUTONOMO ¿? ¿? ¿?
             }
         }
-        return false;
+        return valido;
     }
     
     private boolean comprobarCasados(Usuario usuario){
+        boolean valido = false;
         if(usuario.isCasado() && usuario.getIdPareja() != 0){
-            
+            Usuario pareja = this.usuarioDAO.porId(usuario.getIdPareja());
+            if(pareja.isActivo() && !EstadoLaboral.ESTADOS_PAREJA.contains(pareja.getPerfil().getEstadolab())){
+                valido = isValidoParaPrestamo(pareja);
+            }
         }
-        
-        return false;
+        return valido;
+    }
+    
+    private double calcularPrestamos (double mediaIngreso){
+        return 0;
     }
 
     /**

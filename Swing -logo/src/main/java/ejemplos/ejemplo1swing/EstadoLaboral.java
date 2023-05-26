@@ -14,6 +14,6 @@ import java.util.List;
 public  enum EstadoLaboral {
     EMPLEADO,DESEMPLEADO, AUTÓNOMO, PENSIONISTA, RENTISTA, ESTUDIANTE, RESPONSABLE_DEL_HOGAR;
     
-    public static final List<EstadoLaboral> ESTADOS_DEPNEDIENTE = Arrays.asList(DESEMPLEADO, ESTUDIANTE, RESPONSABLE_DEL_HOGAR);
-    public static final List<EstadoLaboral> ESTADOS_PRE_APROBADOS = Arrays.asList(EMPLEADO, RENTISTA, PENSIONISTA);
+    public static final List<EstadoLaboral> ESTADOS_PAREJA = Arrays.asList(DESEMPLEADO, ESTUDIANTE, RESPONSABLE_DEL_HOGAR);
+    public static final List<EstadoLaboral> ESTADOS_ECONOMICOS = Arrays.asList(EMPLEADO, RENTISTA, PENSIONISTA);
 }
