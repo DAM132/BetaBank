@@ -327,7 +327,7 @@
               <Component id="opcionesUsuario" alignment="1" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -338,7 +338,7 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="233" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
                           <Component id="bienvenido" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -421,7 +421,7 @@
                               <Component id="botonConsultarMov" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                               <Component id="botonPrestamo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="216" max="32767" attributes="0"/>
                               <Component id="botonNominas" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
@@ -450,7 +450,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace type="separate" pref="116" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" pref="118" max="32767" attributes="0"/>
                       <Component id="cerrarSesion" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                       <Component id="logoOpciones" min="-2" max="-2" attributes="0"/>

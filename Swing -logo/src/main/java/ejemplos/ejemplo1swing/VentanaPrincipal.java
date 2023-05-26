@@ -404,7 +404,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(botonConsultarMov)
                         .addGap(91, 91, 91)
                         .addComponent(botonPrestamo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
                         .addComponent(botonNominas)
                         .addGap(21, 21, 21))))
         );
@@ -424,7 +424,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(botonConsultarMov)
                             .addComponent(botonNominas)
                             .addComponent(botonPrestamo))))
-                .addGap(18, 116, Short.MAX_VALUE)
+                .addGap(18, 118, Short.MAX_VALUE)
                 .addComponent(cerrarSesion)
                 .addGap(7, 7, 7)
                 .addComponent(logoOpciones)
@@ -446,7 +446,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addComponent(iban))
                             .addComponent(saldo)))
                     .addGroup(pantallaDatosLayout.createSequentialGroup()
-                        .addGap(233, 233, 233)
+                        .addGap(232, 232, 232)
                         .addComponent(bienvenido)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1170,10 +1170,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // introCantidadd
         // introCuotas
 
-        int idUsuarioAComprobar = 0;
+        int idUsuarioAComprobar = 1;
         Usuario usuario = usuarioDAO.porId(idUsuarioAComprobar);
         if(this.isValidoParaPrestamo(usuario)){
-            double importe = this.calcularPrestamos(usuario.getMediaIngreso());
+//            double importe = this.calcularPrestamos(usuario.getMediaIngreso());
         }else{
             // TODO NO SE LE CONCEDE PRESTAMO
         }
@@ -1427,7 +1427,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         return valido;
     }
     
-    private double calcularPrestamos (double mediaIngreso){
+    private double calcularPrestamos (Usuario usuario){
+        
+//        if (usuario.getMediaIngreso()>) {
+//            
+//        }
+        
         return 0;
     }
 
