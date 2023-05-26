@@ -19,7 +19,7 @@ public class AccesoBaseDatos {
     private static final String BD = "banco";
     private static final String USUARIO = "root";
     private static final String CLAVE = "root";
-    private static final String URL = "jdbc:mysql://192.168.4.108:3306/" + BD;
+    private static final String URL = "jdbc:mysql://10.0.16.42:3306/" + BD;
 
     private AccesoBaseDatos() {
 
