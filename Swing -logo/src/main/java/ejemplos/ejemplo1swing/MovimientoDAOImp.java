@@ -63,13 +63,14 @@ public class MovimientoDAOImp implements Repositorio<Movimiento> {
 
     @Override
     public void insertar(Movimiento movimiento) {
-        String sql = "INSERT INTO movimiento(cantidad,concepto,emisor,destinatario) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO movimiento(cantidad,fecahMov,concepto,emisor,destinatario) VALUES(?,?,?,?,?)";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-            
+            java.sql.Date fecahMov = java.sql.Date.valueOf(movimiento.getFechaMovimiento());
             stmt.setDouble(1, movimiento.getCantidad());
-            stmt.setString(2, movimiento.getConcepto());
-            stmt.setString(3, movimiento.getEmisor());
-            stmt.setString(4, movimiento.getDestinatario());
+            stmt.setDate(2, fecahMov);
+            stmt.setString(3, movimiento.getConcepto());
+            stmt.setString(4, movimiento.getEmisor());
+            stmt.setString(5, movimiento.getDestinatario());
            
             int salida = stmt.executeUpdate();
             if (salida != 1) {
@@ -84,21 +85,20 @@ public class MovimientoDAOImp implements Repositorio<Movimiento> {
 
     @Override
     public void modificar(Movimiento movimiento) {
-        String sql = "UPDATE movimiento SET cantidad=?,concepto=?,emisor=?,destinatario=?,numeroCuenta=?,fecha=?  WHERE idMovimiento=?";
+        String sql = "UPDATE movimiento SET cantidad=?, fecahMov=?,concepto=?,emisor=?,destinatario=? WHERE idMovimiento=?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-            
+            java.sql.Date fecahMov = java.sql.Date.valueOf(movimiento.getFechaMovimiento());
             stmt.setDouble(1, movimiento.getCantidad());
-            stmt.setString(2, movimiento.getConcepto());
-            stmt.setString(3, movimiento.getEmisor());
-            stmt.setString(4, movimiento.getDestinatario());
-            stmt.setString(5, movimiento.getNumeroCuenta());
-            stmt.setDate(6, fnac);
-            stmt.setInt(7, movimiento.getIdMovimiento());
+            stmt.setDate(2, fecahMov);
+            stmt.setString(3, movimiento.getConcepto());
+            stmt.setString(4, movimiento.getEmisor());
+            stmt.setString(5, movimiento.getDestinatario());
+            stmt.setInt(6, movimiento.getIdMovimiento());
             int salida = stmt.executeUpdate();
             if (salida != 1) {
-                throw new Exception("No se ha modificado el cliente");
+                throw new Exception("No se ha modificado el movimiento");
             } else {
-                System.out.println("Se ha modificado el cliente");
+                System.out.println("Se ha modificado el movimiento");
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -125,7 +125,7 @@ public class MovimientoDAOImp implements Repositorio<Movimiento> {
     }
 
     public static Movimiento crearMovimiento(ResultSet rs) throws SQLException {
-        return new Movimiento(rs.getInt("idMovimientos"), rs.getDouble("cantidad"), rs.getString("concepto"), rs.getString("emisor"), rs.getString("destinatario"));
+        return new Movimiento(rs.getInt("idMovimientos"), rs.getDouble("cantidad"), rs.getDate("fechaMov").toLocalDate(),rs.getString("concepto"), rs.getString("emisor"), rs.getString("destinatario"));
     }
 
 }
