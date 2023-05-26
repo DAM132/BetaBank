@@ -17,17 +17,15 @@ public class Movimiento {
     private String concepto;
     private String emisor;
     private String destinatario;
-    private LocalDate fechaMovimiento;
-    private String numeroCuenta;
+   
 
-    public Movimiento(int idMovimiento, double cantidad, String concepto, String emisor, String destinatario, LocalDate fechaMovimiento, String numeroCuenta) {
+    public Movimiento(int idMovimiento, double cantidad, String concepto, String emisor, String destinatario) {
         this.idMovimiento = idMovimiento;
         this.cantidad = cantidad;
         this.concepto = concepto;
         this.emisor = emisor;
         this.destinatario = destinatario;
-        this.fechaMovimiento = fechaMovimiento;
-        this.numeroCuenta = numeroCuenta;
+     
     }
 
     public Movimiento() {
@@ -73,27 +71,12 @@ public class Movimiento {
         this.destinatario = destinatario;
     }
 
-    public LocalDate getFechaMovimiento() {
-        return fechaMovimiento;
-    }
-
-    public void setFechaMovimiento(LocalDate fechaMovimiento) {
-        this.fechaMovimiento = fechaMovimiento;
-    }
-
-    public String getNumeroCuenta() {
-        return numeroCuenta;
-    }
-
-    public void setNumeroCuenta(String numeroCuenta) {
-        this.numeroCuenta = numeroCuenta;
-    }
-
+    
     @Override
     public String toString() {
         
           DateTimeFormatter ldf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return "Movimiento{" + "idMovimiento=" + idMovimiento + ", cantidad=" + cantidad + ", concepto=" + concepto + ", emisor=" + emisor + ", destinatario=" + destinatario + ", fechaMovimiento=" + fechaMovimiento.format(ldf) + ", numeroCuenta=" + numeroCuenta + '}';
+        return "Movimiento{" + "idMovimiento=" + idMovimiento + ", cantidad=" + cantidad + ", concepto=" + concepto + ", emisor=" + emisor + ", destinatario=" + destinatario;
     }
     
     

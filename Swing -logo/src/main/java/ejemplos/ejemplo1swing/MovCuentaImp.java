@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -9,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -41,6 +43,30 @@ public class MovCuentaImp{
         }
         return movimientosCuenta;
     }
+    
+    
+        public ArrayList<MovCuenta> listarPorCliente(String iban) {
+        String sql = "SELECT * FROM movcuenta where numeroCuenta=?";
+        ArrayList<MovCuenta> movimientosCuenta = new ArrayList<>();
+         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            stmt.setString(1, iban);
+            try ( ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    MovCuenta movimientoCuenta = crearMovCuenta(rs);
+                    movimientosCuenta.add(movimientoCuenta);
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("SQLexception: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return movimientosCuenta;
+    }
+    
+    
+    
     
     public MovCuenta getMovCuentaDeUnCliente(String iban) {
         String sql = "SELECT * FROM movcuenta WHERE numeroCuenta=?";
