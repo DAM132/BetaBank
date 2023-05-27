@@ -158,6 +158,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("BETA BANK");
 
+        iniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/personita-removebg-preview.png"))); // NOI18N
         iniciarSesion.setText("Iniciar sesion");
         iniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         iniciarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -166,6 +167,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        registrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/registrarse_logo.png"))); // NOI18N
         registrarse.setText("Registrarse");
         registrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registrarse.addActionListener(new java.awt.event.ActionListener() {
@@ -192,12 +194,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(titulo)))
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pantallaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pantallaInicioLayout.createSequentialGroup()
                     .addGap(97, 97, 97)
                     .addComponent(lblIcono, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(99, Short.MAX_VALUE)))
+                    .addContainerGap(194, Short.MAX_VALUE)))
         );
         pantallaInicioLayout.setVerticalGroup(
             pantallaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,11 +214,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(pantallaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(iniciarSesion)
                     .addComponent(registrarse))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pantallaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pantallaInicioLayout.createSequentialGroup()
                     .addGap(55, 55, 55)
-                    .addComponent(lblIcono, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                    .addComponent(lblIcono, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
                     .addGap(56, 56, 56)))
         );
 
@@ -224,6 +226,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         inicioSesion.setBackground(new java.awt.Color(102, 204, 255));
 
+        entrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/entrar_logo.png"))); // NOI18N
         entrar.setText("Entrar");
         entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         entrar.addActionListener(new java.awt.event.ActionListener() {
@@ -246,6 +249,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         textoInicioSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         textoInicioSesion.setText("INICIO DE SESION");
 
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/logo_volver.png"))); // NOI18N
         volver.setText("Volver");
         volver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         volver.addActionListener(new java.awt.event.ActionListener() {
@@ -270,12 +274,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addGroup(inicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cuadroTexto, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                            .addComponent(cuadroContraseña)))
+                            .addComponent(cuadroContraseña))
+                        .addContainerGap(344, Short.MAX_VALUE))
                     .addGroup(inicioSesionLayout.createSequentialGroup()
                         .addComponent(entrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(volver)))
-                .addContainerGap(247, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(volver)
+                        .addGap(332, 332, 332))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inicioSesionLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(textoInicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,7 +307,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(inicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(entrar)
                     .addComponent(volver))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
                 .addComponent(logoInicio)
                 .addContainerGap())
         );
@@ -363,6 +368,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         logoOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/logo2.jpg"))); // NOI18N
 
+        cerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/cerrarSesion_logo.png"))); // NOI18N
         cerrarSesion.setText("Cerrar sesion");
         cerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -391,7 +397,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addGroup(opcionesUsuarioLayout.createSequentialGroup()
                                 .addComponent(botonSolicitar)
                                 .addGap(18, 18, 18)
-                                .addComponent(botonConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
+                                .addComponent(botonConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE))
                             .addGroup(opcionesUsuarioLayout.createSequentialGroup()
                                 .addComponent(logoOpciones)
                                 .addGap(0, 0, Short.MAX_VALUE)))
@@ -424,7 +430,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(botonConsultarMov)
                             .addComponent(botonNominas)
                             .addComponent(botonPrestamo))))
-                .addGap(18, 118, Short.MAX_VALUE)
+                .addGap(18, 114, Short.MAX_VALUE)
                 .addComponent(cerrarSesion)
                 .addGap(7, 7, 7)
                 .addComponent(logoOpciones)
@@ -652,6 +658,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        enviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/enviar_logo.png"))); // NOI18N
         enviar.setText("Enviar");
         enviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         enviar.addActionListener(new java.awt.event.ActionListener() {
@@ -660,6 +667,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        volver2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/logo_volver.png"))); // NOI18N
         volver2.setText("Volver");
         volver2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         volver2.addActionListener(new java.awt.event.ActionListener() {
@@ -692,7 +700,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(registroLayout.createSequentialGroup()
                         .addGap(202, 202, 202)
                         .addComponent(introduceDatos)))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
         registroLayout.setVerticalGroup(
             registroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -705,7 +713,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(registroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(enviar)
                     .addComponent(volver2))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registroLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logoRegistro)
@@ -725,6 +733,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         cuotas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cuotas.setText("NUMERO DE CUOTAS DE AMORTIZACION: ");
 
+        volver3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/logo_volver.png"))); // NOI18N
         volver3.setText("Volver");
         volver3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         volver3.addActionListener(new java.awt.event.ActionListener() {
@@ -764,7 +773,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addComponent(cuotas)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(introCuotas, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(102, Short.MAX_VALUE))
+                        .addContainerGap(199, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solicitarPrestamoLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(prestamo)
@@ -788,7 +797,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(solicitarPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cuotas)
                     .addComponent(introCuotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
                 .addComponent(volver3)
                 .addGap(15, 15, 15))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, solicitarPrestamoLayout.createSequentialGroup()
@@ -806,6 +815,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         logoConsultarPrestamo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/logo2.jpg"))); // NOI18N
 
+        volver4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/logo_volver.png"))); // NOI18N
         volver4.setText("Volver");
         volver4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         volver4.addActionListener(new java.awt.event.ActionListener() {
@@ -831,7 +841,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(consultarPrestamoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(consultarPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE)
                     .addGroup(consultarPrestamoLayout.createSequentialGroup()
                         .addComponent(logoConsultarPrestamo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -847,7 +857,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(prestamoActual)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(consultarPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(volver4, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -864,6 +874,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         logoConsultarMovimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/logo2.jpg"))); // NOI18N
 
+        volver5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/logo_volver.png"))); // NOI18N
         volver5.setText("Volver");
         volver5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         volver5.addActionListener(new java.awt.event.ActionListener() {
@@ -885,6 +896,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTableMov);
 
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/png-transparent-delete-key-logo-button-text-rectangle-logo-removebg-preview (1).png"))); // NOI18N
         botonEliminar.setText("Eliminar");
         botonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -925,22 +937,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
                                 .addComponent(logoConsultarMovimientos)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botonEliminar)
+                                .addGap(41, 41, 41)
                                 .addComponent(volver5))))
                     .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
-                        .addGroup(consultarMovimientosAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
-                                .addGap(179, 179, 179)
-                                .addComponent(consultarMovimientosEnunciado1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(entradaIdClienteMov, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(48, 48, 48)
-                                .addComponent(botonBuscarMovFiltro)
-                                .addGap(221, 221, 221))
-                            .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
-                                .addGap(155, 155, 155)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(botonEliminar)))
+                        .addGap(179, 179, 179)
+                        .addComponent(consultarMovimientosEnunciado1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(entradaIdClienteMov, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(botonBuscarMovFiltro)
+                        .addGap(294, 294, 294))
+                    .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(consultarMovimientosAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
@@ -954,9 +965,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(consultarMovimientosAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonEliminar)
-                        .addGap(66, 66, 66)
-                        .addComponent(volver5))
+                        .addGroup(consultarMovimientosAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(volver5)
+                            .addComponent(botonEliminar)))
                     .addGroup(consultarMovimientosAdminLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(consultarMovimientosEnunciado)
