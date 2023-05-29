@@ -99,7 +99,9 @@
 
         .client-section {
             text-align: center;
-            width: 100%;
+            width: 50%;
+            background-color: #f4f4f4;
+            border-radius: 5px;
         }
 
         .client-section h2 {
@@ -109,21 +111,28 @@
             margin-bottom: 10px;
         }
 
+        .client-section {
+            display: table;
+            width: 100%;
+        }
+
         .testimonial {
-            margin-bottom: 20px;
-            padding: 10px;
-            background-color: #f4f4f4;
+            display: table-row;
+        }
+
+        .testimonial-cell {
+            display: table-cell;
             padding: 20px;
-            border-radius: 10px;
-            transition: background-color 0.3s;
         }
 
-        .testimonial:hover {
-            background-color: #e0e0e0;
+        .testimonial-left,
+        .testimonial-right {
+            width: 30%;
         }
 
-        .testimonial p {
-            margin: 0;
+        .testimonial-center {
+            width: 40%;
+            text-align: center;
         }
 
         footer {
@@ -140,11 +149,66 @@
             background-color: #f4f4f4;
             padding: 20px;
             border-radius: 10px;
-            transition: background-color 0.3s;
         }
 
-        .quienes-somos:hover {
-            background-color: #e0e0e0;
+        
+
+        .promotion-section {
+            background-color: #f4f4f4;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            width: 50%;
+            border-radius: 10px;
+        }
+
+        .promotion-text {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .promotion-text h2 {
+            font-size: 24px;
+            color: #66cbff;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .promotion-text p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .logo-images {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-images .logo-group {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-images .logo-group .logo {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border: 2px solid #66cbff;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+
+        .logo-images .logo-group .logo img {
+            width: 120px;
+            height: 80px;
         }
     </style>
 </head>
@@ -152,7 +216,7 @@
 <body>
     <div class="banner">
         <h1><img src="Imagenes/Captura-removebg-preview.png" alt="Logo de Beta Bank" width="254" height="75"></h1>
-        <h1>DESCUBRE LOS PRESTAMOS QUE SE ADAPTAN A TI</h1>
+        
     </div>
     <hr>
     <hr>
@@ -171,6 +235,7 @@
     <hr>
 
     <main>
+        <h2>DESCUBRE LOS PRESTAMOS QUE SE ADAPTAN A TI</h2>
         <section class="loan-section">
             <p><b>En BetaBank ofrecemos préstamos atractivos y flexibles que se adaptan a tus necesidades financieras.
                     ¡Obtén el
@@ -184,17 +249,18 @@
                     <hr>
                     <h3><a href="PrestamoPersonal.html" style="text-decoration: none; color: inherit;">Préstamo
                             Personal</a></h3>
-                    <p>Obtén hasta $10,000 con una tasa de interés competitiva y plazos flexibles de pago. Sin
+                    <p>Obtén hasta 10,000€ con una tasa de interés competitiva y plazos flexibles de pago. Sin
                         comisiones ni
                         penalizaciones por pagos atrasados.</p>
                     <p>Características:</p>
                     <ul>
-                        <li>Monto máximo: $10,000</li>
+                        <li>Monto máximo: 10,000€</li>
                         <li>Tasa de interés: Desde 7%</li>
                         <li>Plazos de pago: Hasta 36 meses</li>
                         <li>Proceso de solicitud rápido y sencillo</li>
                     </ul>
                 </div>
+                
                 <div class="loan-option">
                     <a href="PrestamoHipotecario.html" style="text-decoration: none; color: inherit;"><img
                             src="Imagenes/familioa.JPG" alt="Imagen del préstamo personal" align="center" width="300"
@@ -207,10 +273,28 @@
                         plazos de pago.</p>
                     <p>Características:</p>
                     <ul>
-                        <li>Monto máximo: $500,000</li>
+                        <li>Monto máximo: 500,000€</li>
                         <li>Tasa de interés: Desde 4%</li>
                         <li>Plazos de pago: Hasta 30 años</li>
                         <li>Opciones de refinanciamiento disponibles</li>
+                    </ul>
+                </div>
+
+                <div class="loan-option">
+                    <a href="PrestamoAutomovil.html" style="text-decoration: none; color: inherit;">
+                        <img src="Imagenes/prestamoAutomovil.JPG"Imagen del préstamo para automóviles" align="center" width="300" height="504">
+                    </a>
+                    <hr>
+                    <h3>
+                        <a href="PrestamoAutomovil.html" style="text-decoration: none; color: inherit;">Préstamo para Automóviles</a>
+                    </h3>
+                    <p>Financia la compra de tu vehículo nuevo o usado con tasas de interés competitivas y plazos flexibles de pago. Sin comisiones ni penalizaciones por pagos atrasados.</p>
+                    <p>Características:</p>
+                    <ul>
+                        <li>Monto máximo: Variable según el valor del automóvil</li>
+                        <li>Tasa de interés: Desde 5%</li>
+                        <li>Plazos de pago: Hasta 72 meses</li>
+                        <li>Proceso de solicitud rápido y sencillo</li>
                     </ul>
                 </div>
             </div>
@@ -236,29 +320,59 @@
         <br>
 
         <section class="client-section">
-
             <div class="testimonial">
-                <h2>Nuestros clientes satisfechos</h2>
-                <p><b>"¡BetaBank me brindó un préstamo sin complicaciones y con una tasa de interés baja! ¡Estoy muy
-                        contento con su
-                        servicio!"</b></p>
-                <p>- Samuel De Luque</p>
-
-                <hr>
-
-                <p><b>"Nunca había recibido un servicio tan amable y eficiente como el de BetaBank. ¡Recomiendo sus
-                        préstamos a todos!"</b></p>
-                <p>- Mark Evans</p>
-
-                <hr>
-
-                <p><b>"¡BetaBank son los mejores, despues de mi! ¡SUUUUUUUU!!!!"</b></p>
-                <p>- Cristiano Ronaldo</p>
-                <br><img src="Imagenes/patrocinio.png" alt="Imagen de cristiano" width="400" height="450" border="4">
-
+                <div class="testimonial-cell testimonial-left">
+                    <h2>Cliente satisfecho</h2>
+                    <p><b>"¡BetaBank me brindó un préstamo sin complicaciones y con una tasa de interés baja! ¡Estoy muy
+                            contento con su servicio!"</b></p>
+                    <p>- Samuel De Luque</p>
+                </div>
+                <div class="testimonial-cell testimonial-center">
+                    <h2>NUESTRO CLIENTE ESPECIAL</h2>
+                    <p><b>"¡BetaBank son los mejores, después de mí! ¡SUUUUUUUU!!!!"</b></p>
+                    <p>- Cristiano Ronaldo</p>
+                    <img src="Imagenes/patrocinio.png" alt="Imagen de Cristiano Ronaldo" width="400" height="450"
+                        border="4">
+                </div>
+                <div class="testimonial-cell testimonial-right">
+                    <h2>Cliente satisfecho</h2>
+                    <p><b>"Nunca había recibido un servicio tan amable y eficiente como el de BetaBank. ¡Recomiendo sus
+                            préstamos a todos!"</b></p>
+                    <p>- Mark Evans</p>
+                </div>
             </div>
-
         </section>
+
+        <hr>
+        <hr>
+
+        <div class="promotion-section">
+            <div class="promotion-text">
+                <h2>¡Promoción Especial para Nuestros Clientes!</h2>
+                <p>Si te haces cliente de BetaBank, tendrás acceso gratuito <b>DURANTE UN MES</b> a los siguientes servicios de
+                    entretenimiento:</p>
+                <ul>
+                    <li>Disney+</li>
+                    <li>Netflix</li>
+                    <li>HBO</li>
+                </ul>
+            </div>
+            <div class="logo-images">
+                <div class="logo-group">
+                    <div class="logo">
+                        <img src="Imagenes/logoDisney.png" alt="Logo de Disney+">
+                    </div>
+                    <div class="logo">
+                        <img src="Imagenes/Logo-Netflix.png" alt="Logo de Netflix">
+                    </div>
+                </div>
+                <div class="logo-group">
+                    <div class="logo">
+                        <img src="Imagenes/logo-HBO.png" alt="Logo de HBO Max">
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </main>
 
