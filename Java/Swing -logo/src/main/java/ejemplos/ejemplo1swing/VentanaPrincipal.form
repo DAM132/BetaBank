@@ -90,7 +90,11 @@
                           <Component id="titulo" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+<<<<<<< HEAD:Swing -logo/src/main/java/ejemplos/ejemplo1swing/VentanaPrincipal.form
+                  <EmptySpace pref="305" max="32767" attributes="0"/>
+=======
                   <EmptySpace max="32767" attributes="0"/>
+>>>>>>> 2bd604438c609251159f382b12f7807a883f4993:Java/Swing -logo/src/main/java/ejemplos/ejemplo1swing/VentanaPrincipal.form
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -218,6 +222,10 @@
                           <EmptySpace min="-2" pref="332" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+<<<<<<< HEAD:Swing -logo/src/main/java/ejemplos/ejemplo1swing/VentanaPrincipal.form
+                  <EmptySpace pref="344" max="32767" attributes="0"/>
+=======
+>>>>>>> 2bd604438c609251159f382b12f7807a883f4993:Java/Swing -logo/src/main/java/ejemplos/ejemplo1swing/VentanaPrincipal.form
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
@@ -417,10 +425,19 @@
                                       <Component id="botonSolicitar" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="botonConsultar" pref="417" max="32767" attributes="0"/>
+<<<<<<< HEAD:Swing -logo/src/main/java/ejemplos/ejemplo1swing/VentanaPrincipal.form
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="botonLiquidar" min="-2" max="-2" attributes="0"/>
+=======
+>>>>>>> 2bd604438c609251159f382b12f7807a883f4993:Java/Swing -logo/src/main/java/ejemplos/ejemplo1swing/VentanaPrincipal.form
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="logoOpciones" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD:Swing -logo/src/main/java/ejemplos/ejemplo1swing/VentanaPrincipal.form
+                                      <EmptySpace min="0" pref="635" max="32767" attributes="0"/>
+=======
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+>>>>>>> 2bd604438c609251159f382b12f7807a883f4993:Java/Swing -logo/src/main/java/ejemplos/ejemplo1swing/VentanaPrincipal.form
                                   </Group>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1116,7 +1133,14 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD:Swing -logo/src/main/java/ejemplos/ejemplo1swing/VentanaPrincipal.form
+                      <Group type="102" attributes="0">
+                          <Component id="prestamoActual" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="536" max="32767" attributes="0"/>
+                      </Group>
+=======
                       <Component id="jScrollPane1" pref="772" max="32767" attributes="0"/>
+>>>>>>> 2bd604438c609251159f382b12f7807a883f4993:Java/Swing -logo/src/main/java/ejemplos/ejemplo1swing/VentanaPrincipal.form
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="logoConsultarPrestamo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -1259,6 +1283,13 @@
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="ConsultarClientesAdmin" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -1295,6 +1326,13 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="introCantidadd1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="ConsultarClientesAdmin" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -1398,6 +1436,132 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonBuscarMovFiltroActionPerformed"/>
           </Events>
         </Component>
+        <Container class="javax.swing.JPanel" name="ConsultarClientesAdmin">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="cc" red="66" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="544" max="-2" attributes="0"/>
+                      <EmptySpace pref="85" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="consultarMovimientosEnunciado2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="logoConsultarMovimientos1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="volver6" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="introCantidadd2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="volver6" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                              <Component id="consultarMovimientosEnunciado2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="73" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" min="-2" pref="270" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                              <Component id="logoConsultarMovimientos1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="introCantidadd2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="consultarMovimientosEnunciado2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Clientes"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="logoConsultarMovimientos1">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagen/logo2.jpg"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="volver6">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Volver"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="volver6ActionPerformed"/>
+              </Events>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="jTableListarClientesAdmin">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0"/>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JTextField" name="introCantidadd2">
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>
