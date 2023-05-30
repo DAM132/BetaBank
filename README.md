@@ -77,17 +77,17 @@ Proyecto Intermodular para el trabajo de fin de curso 2022/2023
 
 ## Memoria
  
- -[22 de Mayo](Memoria/Memoria23.docx)
+ -[22 de Mayo](Memoria/Memoria.docx)
   
-  -[23 de Mayo](Memoria/Memoria23.docx)
+  -[23 de Mayo](Memoria/Memoria.docx)
   
-  -[24 de Mayo](Memoria/Memoria23.docx)
+  -[24 de Mayo](Memoria/Memoria.docx)
   
-  -[25 de Mayo](Memoria/Memoria23.docx)
+  -[25 de Mayo](Memoria/Memoria.docx)
   
-  -[26 de Mayo](Memoria/Memoria23.docx)
+  -[26 de Mayo](Memoria/Memoria.docx)
   
-  -[29 de Mayo](Memoria/Memoria23.docx)
+  -[29 de Mayo](Memoria/Memoria.docx)
   
   ## CODIGO RELEVANTE 
   
