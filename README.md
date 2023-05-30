@@ -17,7 +17,7 @@ Proyecto Intermodular para el trabajo de fin de curso 2022/2023
 
   [Pablo Paz - Analista](https://github.com/DAM122)
 
-## Alcance  de la aplicación 🚀
+## Alcance  de la aplicación 
 
  Objetivo: Desarrollar una aplicación para consultoría bancaria para determinar si los clientes tienen un préstamo preconcedido o no.
  
