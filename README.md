@@ -77,17 +77,17 @@ Proyecto Intermodular para el trabajo de fin de curso 2022/2023
 
 ## Memoria
  
- -[22 de Mayo](https://github.com/DAM122)
+ -[22 de Mayo](Memoria/Memoria23.docx)
   
-  -[23 de Mayo](https://github.com/DAM122)
+  -[23 de Mayo](Memoria/Memoria23.docx)
   
-  -[24 de Mayo](https://github.com/DAM122)
+  -[24 de Mayo](Memoria/Memoria23.docx)
   
-  -[25 de Mayo](https://github.com/DAM122)
+  -[25 de Mayo](Memoria/Memoria23.docx)
   
-  -[26 de Mayo](https://github.com/DAM122)
+  -[26 de Mayo](Memoria/Memoria23.docx)
   
-  -[29 de Mayo](https://github.com/DAM122)
+  -[29 de Mayo](Memoria/Memoria23.docx)
   
   ## CODIGO RELEVANTE 
   
