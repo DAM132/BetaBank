@@ -40,6 +40,11 @@ Proyecto Intermodular para el trabajo de fin de curso 2022/2023
 
 ![alt text](assets/Esquema_de_clases.jpeg)
 
+**Diagrama de comportamiento**
+
+![alt text](/ED/Diagramas/Diagrama_Admin.png)
+
+![alt text](/ED/Diagramas/Diagrama_Usuario.png)
 
 **Memoria**
  
