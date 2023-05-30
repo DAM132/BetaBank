@@ -27,13 +27,19 @@ Proyecto Intermodular para el trabajo de fin de curso 2022/2023
   
 **Diagrama de clases**
 
+![alt text](assets/Entidad_relacion.jpeg)
  
 
 **ER**
 
+![alt text](assets/ER.jpeg)
+
 
 
 **Diagrama entidad Relación**
+
+![alt text](assets/Esquema_de_clases.jpeg)
+
 
 **Memoria**
  
