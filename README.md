@@ -39,7 +39,10 @@ Proyecto Intermodular para el trabajo de fin de curso 2022/2023
 
 [**Diagrama de comportamiento Admin**](/ED/Diagramas/Diagrama_Admin.png)
 
-[**Diagrama de comportamiento Admin**](/ED/Diagramas/Diagrama_Usuario.png)
+[**Diagrama de comportamiento Usuario**](/ED/Diagramas/Diagrama_Usuario.png)
+
+[**Triggers BBDD**](/BD/readme.md)
+
 
 
 ## Funciones
