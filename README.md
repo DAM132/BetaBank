@@ -25,8 +25,8 @@ Proyecto Intermodular para el trabajo de fin de curso 2022/2023
     -Sistemas Informáticos
   
   
-**Diagrama de clases**
 
+**Diagrama entidad Relación**
 ![alt text](assets/Entidad_relacion.jpeg)
  
 
@@ -35,8 +35,8 @@ Proyecto Intermodular para el trabajo de fin de curso 2022/2023
 ![alt text](assets/ER.jpeg)
 
 
+**Diagrama de clases**
 
-**Diagrama entidad Relación**
 
 ![alt text](assets/Esquema_de_clases.jpeg)
 
@@ -56,6 +56,12 @@ Proyecto Intermodular para el trabajo de fin de curso 2022/2023
   -[29 de Mayo](https://github.com/DAM122)
 
 
+**Proyectos abiertos** 
+
+Aportación a traves de issues.
+
+
+  -[Enlace](https://github.com/DAM132/BetaBank/projects?query=is%3Aopen)
 
    
    
